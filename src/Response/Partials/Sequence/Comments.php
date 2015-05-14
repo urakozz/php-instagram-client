@@ -10,10 +10,10 @@
  * @link      http://www.home24.de
  */
 
-namespace App\Response\Partials\Sequence;
+namespace Instagram\Response\Partials\Sequence;
 
 
-use App\Response\Partials\Caption;
+use Instagram\Response\Partials\Caption;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation\Type;
 
@@ -22,7 +22,7 @@ use JMS\Serializer\Annotation\Type;
  *
  * Class Comments
  *
- * @package App\Response\Partials\Sequence
+ * @package Instagram\Response\Partials\Sequence
  * @method Caption[] getData()
  */
 class Comments extends AbstractSequence
@@ -30,7 +30,7 @@ class Comments extends AbstractSequence
 
     /**
      * @var ArrayCollection | Caption[]
-     * @Type("ArrayCollection<App\Response\Partials\Caption>")
+     * @Type("ArrayCollection<Instagram\Response\Partials\Caption>")
      */
     protected $data;
 

@@ -10,7 +10,7 @@
  * @link      http://www.home24.de
  */
 
-namespace App\Response\Partials\Image;
+namespace Instagram\Response\Partials\Image;
 
 
 use JMS\Serializer\Annotation\Type;

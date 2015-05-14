@@ -10,11 +10,11 @@
  * @link      http://www.home24.de
  */
 
-namespace App\Response;
+namespace Instagram\Response;
 
 
-use App\Response\Partials\Meta;
-use App\Response\Partials\Pagination;
+use Instagram\Response\Partials\Meta;
+use Instagram\Response\Partials\Pagination;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation\Type;
 
@@ -28,13 +28,13 @@ class InstagramResponse
 
     /**
      * @var Meta
-     * @Type("App\Response\Partials\Meta")
+     * @Type("Instagram\Response\Partials\Meta")
      */
     protected $meta;
 
     /**
      * @var Pagination
-     * @Type("App\Response\Partials\Pagination")
+     * @Type("Instagram\Response\Partials\Pagination")
      */
     protected $pagination;
 

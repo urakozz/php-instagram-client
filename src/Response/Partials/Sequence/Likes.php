@@ -10,10 +10,10 @@
  * @link      http://www.home24.de
  */
 
-namespace App\Response\Partials\Sequence;
+namespace Instagram\Response\Partials\Sequence;
 
 
-use App\Response\Partials\UserInfo;
+use Instagram\Response\Partials\UserInfo;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation\Type;
 
@@ -21,7 +21,7 @@ class Likes extends AbstractSequence{
 
     /**
      * @var ArrayCollection | UserInfo[]
-     * @Type("ArrayCollection<App\Response\Partials\UserInfo>")
+     * @Type("ArrayCollection<Instagram\Response\Partials\UserInfo>")
      */
     protected $data;
 

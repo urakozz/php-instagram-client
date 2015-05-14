@@ -10,7 +10,7 @@
  * @link      http://www.home24.de
  */
 
-namespace App\Response\Partials;
+namespace Instagram\Response\Partials;
 
 
 use App\Components\Translator\ITranslatable;
@@ -44,7 +44,7 @@ class Caption
 
     /**
      * @var UserInfo
-     * @Type("App\Response\Partials\UserInfo")
+     * @Type("Instagram\Response\Partials\UserInfo")
      */
     public $from;
 

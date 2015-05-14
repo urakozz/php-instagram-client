@@ -10,20 +10,17 @@
  * @link      http://www.home24.de
  */
 
-namespace App\Response\Users;
+namespace Instagram\Response\Users;
 
-
-use App\Components\Translator\ITranslatable;
-use App\Components\Translator\ITranslatableContainer;
-use App\Response\InstagramResponse;
-use App\Response\Partials\Media;
+use Instagram\Response\InstagramResponse;
+use Instagram\Response\Partials\Media;
 use JMS\Serializer\Annotation\Type;
 
 class MediaFeed extends InstagramResponse
 {
     /**
      * @var Media[]
-     * @Type("ArrayCollection<App\Response\Partials\Media>")
+     * @Type("ArrayCollection<Instagram\Response\Partials\Media>")
      */
     protected $data;
 

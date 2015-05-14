@@ -10,7 +10,7 @@
  * @link      http://www.home24.de
  */
 
-namespace App\Response\Partials\Image;
+namespace Instagram\Response\Partials\Image;
 
 
 use JMS\Serializer\Annotation\Type;
@@ -20,19 +20,19 @@ class Images
 
     /**
      * @var ImageDetails
-     * @Type("App\Response\Partials\Image\ImageDetails")
+     * @Type("Instagram\Response\Partials\Image\ImageDetails")
      */
     protected $thumbnail;
 
     /**
      * @var ImageDetails
-     * @Type("App\Response\Partials\Image\ImageDetails")
+     * @Type("Instagram\Response\Partials\Image\ImageDetails")
      */
     protected $lowResolution;
 
     /**
      * @var ImageDetails
-     * @Type("App\Response\Partials\Image\ImageDetails")
+     * @Type("Instagram\Response\Partials\Image\ImageDetails")
      */
     protected $standardResolution;
 

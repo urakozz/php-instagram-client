@@ -10,12 +10,12 @@
  * @link      http://www.home24.de
  */
 
-namespace App\Response\Partials;
+namespace Instagram\Response\Partials;
 
 
-use App\Response\Partials\Image\Images;
-use App\Response\Partials\Sequence\Comments;
-use App\Response\Partials\Sequence\Likes;
+use Instagram\Response\Partials\Image\Images;
+use Instagram\Response\Partials\Sequence\Comments;
+use Instagram\Response\Partials\Sequence\Likes;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation\Type;
 
@@ -42,13 +42,13 @@ class Media
 
     /**
      * @var Comments
-     * @Type("App\Response\Partials\Sequence\Comments")
+     * @Type("Instagram\Response\Partials\Sequence\Comments")
      */
     protected $comments = [];
 
     /**
      * @var Likes
-     * @Type("App\Response\Partials\Sequence\Likes")
+     * @Type("Instagram\Response\Partials\Sequence\Likes")
      */
     protected $likes = [];
 
@@ -72,19 +72,19 @@ class Media
 
     /**
      * @var Images
-     * @Type("App\Response\Partials\Image\Images")
+     * @Type("Instagram\Response\Partials\Image\Images")
      */
     protected $images;
 
     /**
      * @var ArrayCollection | UserInfo[]
-     * @Type("App\Response\Partials\UserInfo")
+     * @Type("Instagram\Response\Partials\UserInfo")
      */
     protected $userInPhoto;
 
     /**
      * @var Caption
-     * @Type("App\Response\Partials\Caption")
+     * @Type("Instagram\Response\Partials\Caption")
      */
     protected $caption;
 
@@ -96,7 +96,7 @@ class Media
 
     /**
      * @var UserInfo
-     * @Type("App\Response\Partials\UserInfo")
+     * @Type("Instagram\Response\Partials\UserInfo")
      */
     protected $user;
 

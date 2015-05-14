@@ -10,7 +10,7 @@
  * @link      http://www.home24.de
  */
 
-namespace App\Response\Partials\Sequence;
+namespace Instagram\Response\Partials\Sequence;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
