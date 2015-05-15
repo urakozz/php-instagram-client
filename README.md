@@ -10,7 +10,7 @@
 composer install
 vendor/bin/phpunit
 
-# with tests 
+# with coverage
 vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 
