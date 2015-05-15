@@ -9,33 +9,37 @@
  * @link      https://github.com/urakozz/php-instagram-client
  */
 
-namespace Instagram\Client;
-
-use Instagram\Client\Config\TokenConfig;
+namespace Instagram\Client\Config;
 
 /**
  * PHP Version 5
  *
- * Class InstagramClient
+ * Class TokenConfig
  *
- * @package   Instagram\Client
+ * @package   Instagram\Client\Config
  * @author    "Yury Kozyrev" <urakozz@gmail.com>
  * @copyright 2015 "Yury Kozyrev"
  * @license   MIT
  * @link      https://github.com/urakozz/php-instagram-client
  */
-class InstagramClient
+class TokenConfig extends AbstractConfig
 {
     /**
-     * @var TokenConfig
+     * @var string
      */
-    protected $config;
+    protected $token;
 
     /**
-     * @param TokenConfig $config
+     * @param string $token
      */
-    public function __construct(TokenConfig $config)
+    public function __construct($token)
     {
-        $this->config = $config;
+        $this->token = $token;
+        $this->validate();
+    }
+
+    protected function doValidate()
+    {
+        // TODO: Implement doValidate() method.
     }
 }

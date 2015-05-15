@@ -10,6 +10,7 @@
  */
 
 namespace Instagram\Request;
+use GuzzleHttp\ClientInterface;
 use Instagram\Response\InstagramResponse;
 
 /**
@@ -54,4 +55,15 @@ abstract class AbstractInstagramRequest
      * @return InstagramResponse
      */
     abstract public function getResponsePrototype();
+
+    public function getRequest(ClientInterface $client)
+    {
+        $options = [];
+        if($attributes = $this->getAttributes()){
+            $key = "POST" === $this->getMethod() ? "body" : "query";
+            $options[$key] = $attributes;
+        }
+
+        return $client->createRequest($this->getMethod(), $this->getUrl(), $options);
+    }
 }
