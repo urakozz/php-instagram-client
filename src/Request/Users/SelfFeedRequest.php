@@ -14,7 +14,7 @@ namespace Instagram\Request\Users;
 
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Users\SelfFeed;
+use Instagram\Response\Users\SelfFeedResponse;
 
 class SelfFeedRequest extends AbstractInstagramRequest
 {
@@ -56,6 +56,6 @@ class SelfFeedRequest extends AbstractInstagramRequest
      */
     public function getResponsePrototype()
     {
-        return new SelfFeed();
+        return new SelfFeedResponse();
     }
 }

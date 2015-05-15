@@ -13,14 +13,14 @@
 namespace Instagram\Tests;
 
 
-use Instagram\Response\Users\SelfFeed;
+use Instagram\Response\Users\SelfFeedResponse;
 
 class InitTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testInit()
     {
-        $class = new SelfFeed();
-        $this->assertInstanceOf(SelfFeed::class, $class);
+        $class = new SelfFeedResponse();
+        $this->assertInstanceOf(SelfFeedResponse::class, $class);
     }
 }

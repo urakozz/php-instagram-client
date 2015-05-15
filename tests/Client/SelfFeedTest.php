@@ -18,7 +18,7 @@ use Instagram\Client\InstagramClient;
 use Instagram\Request\Users\SelfFeedRequest;
 use Instagram\Response\Partials\Meta;
 use Instagram\Response\Partials\Pagination;
-use Instagram\Response\Users\SelfFeed;
+use Instagram\Response\Users\SelfFeedResponse;
 
 class SelfFeedTest extends \PHPUnit_Framework_TestCase
 {
@@ -36,15 +36,15 @@ class SelfFeedTest extends \PHPUnit_Framework_TestCase
     public function testMediaResponse()
     {
         $stream = new \GuzzleHttp\Stream\BufferStream();
-        $stream->write(file_get_contents("tests/fixtures/usersSelfFeed.json"));
+        $stream->write(file_get_contents(__DIR__."/fixtures/usersSelfFeed.json"));
         $this->client->shouldReceive('send')->andReturn(new \GuzzleHttp\Message\Response(200, [], $stream));
 
         $token = "228952246.d2cbeff.256ed5da07084b1cb49d089d0e210a82";
         $client = new InstagramClient(new TokenConfig($token), $this->client);
-        /** @var SelfFeed $response */
+        /** @var SelfFeedResponse $response */
         $response = $client->call(new SelfFeedRequest());
 
-        $this->assertInstanceOf(SelfFeed::class, $response);
+        $this->assertInstanceOf(SelfFeedResponse::class, $response);
         $this->assertTrue($response->isOk());
         $this->assertEquals(200, $response->getCode());
         $this->assertNull($response->getErrorType());

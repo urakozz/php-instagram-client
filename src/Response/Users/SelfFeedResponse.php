@@ -16,7 +16,7 @@ use Instagram\Response\AbstractMediaResponse;
 use Instagram\Response\Partials\Media;
 use JMS\Serializer\Annotation\Type;
 
-class SelfFeed extends AbstractMediaResponse
+class SelfFeedResponse extends AbstractMediaResponse
 {
     /**
      * @var Media[]
