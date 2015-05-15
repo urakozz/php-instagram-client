@@ -2,23 +2,32 @@
 /**
  * PHP Version 5
  *
- * @category  H24
- * @package   
- * @author    "Yury Kozyrev" <yury.kozyrev@home24.de>
- * @copyright 2015 Home24 GmbH
- * @license   Proprietary license.
- * @link      http://www.home24.de
+ * @package
+ * @author    "Yury Kozyrev" <urakozz@gmail.com>
+ * @copyright 2015 "Yury Kozyrev"
+ * @license   MIT
+ * @link      https://github.com/urakozz/php-instagram-client
  */
 
 namespace Instagram\Response;
-
 
 use Instagram\Response\Partials\Meta;
 use Instagram\Response\Partials\Pagination;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation\Type;
 
-class InstagramResponse
+/**
+ * PHP Version 5
+ *
+ * Class MediaResponse
+ *
+ * @package   Instagram\Response
+ * @author    "Yury Kozyrev" <urakozz@gmail.com>
+ * @copyright 2015 "Yury Kozyrev"
+ * @license   MIT
+ * @link      https://github.com/urakozz/php-instagram-client
+ */
+class AbstractMediaResponse extends AbstractInstagramResponse
 {
 
     /**
@@ -84,5 +93,33 @@ class InstagramResponse
     public function setPagination($pagination)
     {
         $this->pagination = $pagination;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCode()
+    {
+        return $this->getMeta()->getCode();
+    }
+
+    /**
+     * Desc
+     *
+     * @return string
+     */
+    public function getErrorType()
+    {
+        return $this->getMeta()->getErrorType();
+    }
+
+    /**
+     * Desc
+     *
+     * @return string
+     */
+    public function getErrorMessage()
+    {
+        return $this->getMeta()->getErrorType();
     }
 }

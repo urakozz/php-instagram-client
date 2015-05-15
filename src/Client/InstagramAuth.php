@@ -16,6 +16,9 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
 use Instagram\Client\Config\AuthConfig;
 use Instagram\Request\OAuth\OAuthRequest;
+use Instagram\Response\OAuth\OAuthResponse;
+use Instagram\Serializer\InstagramSerializerInterface;
+use Instagram\Serializer\JMSSerializer;
 
 /**
  * PHP Version 5
@@ -41,6 +44,9 @@ class InstagramAuth
      */
     protected $client;
 
+    /**
+     * @var InstagramSerializerInterface
+     */
     protected $serializer;
 
     /**
@@ -51,8 +57,7 @@ class InstagramAuth
     {
         $this->config     = $config;
         $this->client     = $client ?: new Client();
-        $this->serializer = \JMS\Serializer\SerializerBuilder::create()->build();
-        \Doctrine\Common\Annotations\AnnotationRegistry::registerLoader('class_exists');
+        $this->serializer = new JMSSerializer();
     }
 
     /**
@@ -65,6 +70,13 @@ class InstagramAuth
         return sprintf("https://api.instagram.com/oauth/authorize/?%s", http_build_query($this->getOAuthAttributes()));
     }
 
+    /**
+     * Get Authorization Object
+     *
+     * @param $code
+     * @return OAuthResponse
+     * @throws RequestException
+     */
     public function retrieveOAuthToken($code)
     {
         $attributes    = $this->getTokenAttributes($code);
@@ -79,7 +91,7 @@ class InstagramAuth
                 throw $e;
             }
         }
-        $res = $this->serializer->deserialize($response->getBody()->getContents(), get_class($request->getResponsePrototype()) ,'json');
+        $res = $this->serializer->deserialize($response->getBody()->getContents(), $request->getResponsePrototype());
         return $res;
     }
 
@@ -98,6 +110,12 @@ class InstagramAuth
         return $attributes;
     }
 
+    /**
+     * Get token request attributes
+     *
+     * @param $code
+     * @return array
+     */
     protected function getTokenAttributes($code)
     {
         $attributes                  = [];

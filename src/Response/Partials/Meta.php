@@ -24,6 +24,18 @@ class Meta
     protected $code;
 
     /**
+     * @var string
+     * @Type("string")
+     */
+    protected $errorType;
+
+    /**
+     * @var string
+     * @Type("string")
+     */
+    protected $errorMessage;
+
+    /**
      * @return int
      */
     public function getCode()
@@ -37,5 +49,37 @@ class Meta
     public function setCode($code)
     {
         $this->code = $code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getErrorType()
+    {
+        return $this->errorType;
+    }
+
+    /**
+     * @param string $errorType
+     */
+    public function setErrorType($errorType)
+    {
+        $this->errorType = $errorType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getErrorMessage()
+    {
+        return $this->errorMessage;
+    }
+
+    /**
+     * @param string $errorMessage
+     */
+    public function setErrorMessage($errorMessage)
+    {
+        $this->errorMessage = $errorMessage;
     }
 }

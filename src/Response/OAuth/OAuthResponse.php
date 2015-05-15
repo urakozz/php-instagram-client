@@ -2,15 +2,16 @@
 /**
  * PHP Version 5
  *
- * @package   
+ * @package
  * @author    "Yury Kozyrev" <urakozz@gmail.com>
- * @copyright 2015 "Yury Kozyrev" 
+ * @copyright 2015 "Yury Kozyrev"
  * @license   MIT
  * @link      https://github.com/urakozz/php-instagram-client
  */
 
 namespace Instagram\Response\OAuth;
 
+use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Partials\UserInfo;
 use JMS\Serializer\Annotation\Type;
 
@@ -25,7 +26,7 @@ use JMS\Serializer\Annotation\Type;
  * @license   MIT
  * @link      https://github.com/urakozz/php-instagram-client
  */
-class OAuthResponse
+class OAuthResponse extends AbstractInstagramResponse
 {
     /**
      * @var int
@@ -135,11 +136,6 @@ class OAuthResponse
     public function setAccessToken($accessToken)
     {
         $this->accessToken = $accessToken;
-    }
-
-    public function isOk()
-    {
-        return null === $this->getCode();
     }
 
 

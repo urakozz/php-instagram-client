@@ -13,6 +13,7 @@ namespace Instagram\Request\OAuth;
 
 
 use Instagram\Request\AbstractInstagramRequest;
+use Instagram\Response\AbstractMediaResponse;
 use Instagram\Response\InstagramResponse;
 use Instagram\Response\OAuth\OAuthResponse;
 
@@ -29,6 +30,13 @@ use Instagram\Response\OAuth\OAuthResponse;
  */
 class OAuthRequest extends AbstractInstagramRequest
 {
+    /**
+     * Endpoint
+     *
+     * @var string
+     */
+    protected $endPoint = "https://api.instagram.com/oauth";
+
     /**
      * @var array
      */
@@ -59,7 +67,7 @@ class OAuthRequest extends AbstractInstagramRequest
      */
     public function getUrl()
     {
-        return "https://api.instagram.com/oauth/access_token";
+        return "/access_token";
     }
 
     /**
@@ -75,7 +83,7 @@ class OAuthRequest extends AbstractInstagramRequest
     /**
      * Get Response Prototype
      *
-     * @return InstagramResponse
+     * @return OAuthResponse
      */
     public function getResponsePrototype()
     {

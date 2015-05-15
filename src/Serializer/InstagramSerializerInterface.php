@@ -4,7 +4,7 @@
 namespace Instagram\Serializer;
 
 
-use Instagram\Response\InstagramResponse;
+use Instagram\Response\AbstractInstagramResponse;
 
 /**
  * Interface InstagramSerializerInterface
@@ -23,8 +23,8 @@ interface InstagramSerializerInterface
      * Deserialize JSON to Response object
      *
      * @param string $json
-     * @param InstagramResponse $response
-     * @return InstagramResponse
+     * @param AbstractInstagramResponse $response
+     * @return AbstractInstagramResponse
      */
-    public function deserialize($json, InstagramResponse $response);
+    public function deserialize($json, AbstractInstagramResponse $response);
 }

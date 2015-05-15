@@ -12,11 +12,11 @@
 
 namespace Instagram\Response\Users;
 
-use Instagram\Response\InstagramResponse;
+use Instagram\Response\AbstractMediaResponse;
 use Instagram\Response\Partials\Media;
 use JMS\Serializer\Annotation\Type;
 
-class MediaFeed extends InstagramResponse
+class SelfFeed extends AbstractMediaResponse
 {
     /**
      * @var Media[]

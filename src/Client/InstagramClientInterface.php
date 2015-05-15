@@ -2,7 +2,7 @@
 
 namespace Instagram\Client;
 use Instagram\Request\AbstractInstagramRequest;
-use Instagram\Response\InstagramResponse;
+use Instagram\Response\AbstractInstagramResponse;
 
 /**
  * Interface InstagramClientInterface
@@ -20,7 +20,7 @@ interface InstagramClientInterface
      * Make request
      *
      * @param AbstractInstagramRequest $request
-     * @return InstagramResponse
+     * @return AbstractInstagramResponse
      */
     public function call(AbstractInstagramRequest $request);
 }
