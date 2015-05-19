@@ -20,6 +20,7 @@ use Instagram\Response\OAuth\OAuthResponse;
 use Instagram\Serializer\InstagramSerializerInterface;
 use Instagram\Serializer\JMSSerializer;
 
+
 /**
  * PHP Version 5
  *

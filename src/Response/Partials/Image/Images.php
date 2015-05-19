@@ -1,4 +1,5 @@
 <?php
+
 namespace Instagram\Response\Partials\Image;
 
 
