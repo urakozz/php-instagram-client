@@ -13,7 +13,7 @@
 namespace Instagram\Tests;
 
 
-use Instagram\Response\Users\SelfFeedResponse;
+use Instagram\Response\Media\Users\SelfFeedResponse;
 
 class InitTest extends \PHPUnit_Framework_TestCase
 {

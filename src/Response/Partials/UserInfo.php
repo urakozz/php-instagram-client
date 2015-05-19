@@ -42,6 +42,18 @@ class UserInfo {
     protected $profilePicture;
 
     /**
+     * @var string
+     * @Type("string")
+     */
+    protected $bio;
+
+    /**
+     * @var string
+     * @Type("string")
+     */
+    protected $website;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -103,6 +115,38 @@ class UserInfo {
     public function setProfilePicture($profilePicture)
     {
         $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBio()
+    {
+        return $this->bio;
+    }
+
+    /**
+     * @param string $bio
+     */
+    public function setBio($bio)
+    {
+        $this->bio = $bio;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * @param string $website
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
     }
 
 
