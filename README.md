@@ -11,8 +11,7 @@ composer install
 vendor/bin/phpunit
 
 # with coverage
-vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-
+vendor/bin/phpunit --coverage-html=build/logs
 
 ```
 
