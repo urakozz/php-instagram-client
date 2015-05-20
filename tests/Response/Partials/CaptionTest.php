@@ -30,7 +30,7 @@ class CaptionTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($data, $response->getFrom());
         $this->assertEquals("Здравствуй InstaTranslate!", $response->getTranslation());
 
-        $this->assertNull($response->isTranslated());
+        $this->assertTrue($response->isTranslated());
 
     }
 
