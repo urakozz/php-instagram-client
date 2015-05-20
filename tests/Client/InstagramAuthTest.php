@@ -41,8 +41,6 @@ class InstagramAuthTest extends \PHPUnit_Framework_TestCase
     {
         $auth = new InstagramAuth($this->config);
         $url  = $auth->getOAuthUrl();
-        //assertEquals(mixed $expected, mixed $actual[, string $message = ''])
-        //Сообщает об ошибке $message если переменные $expected и $actual не равны между собой.
         $this->assertEquals(
             'https://api.instagram.com/oauth/authorize/?client_id=d2cbeff4792242f7b49ea65f984a1237&response_type=code&redirect_uri=http%3A%2F%2F192.168.50.50%2Fauth&scopes=basic',
             $url);
@@ -57,19 +55,13 @@ class InstagramAuthTest extends \PHPUnit_Framework_TestCase
         $auth = new InstagramAuth($this->config, $this->client);
         $resp = $auth->retrieveOAuthToken(md5("random"));
 
-        //assertInstanceOf($expected, $actual[, $message = ''])
-        //Сообщает об ошибке $message если $actual не является экземпляром $expected.
         $this->assertInstanceOf(OAuthResponse::class, $resp);
 
-        //assertFalse(bool $condition[, string $message = ''])
-        //Сообщает об ошибке $message если $condition равно TRUE.
         $this->assertFalse($resp->isOk());
         $this->assertEquals(400, $resp->getCode());
         $this->assertEquals("OAuthException", $resp->getErrorType());
         $this->assertEquals("No matching code found.", $resp->getErrorMessage());
 
-        //assertNull(mixed $variable[, string $message = ''])
-        //Сообщает об ошибке $message если $variable не NULL.
         $this->assertNull($resp->getUser());
         $this->assertNull($resp->getAccessToken());
     }
