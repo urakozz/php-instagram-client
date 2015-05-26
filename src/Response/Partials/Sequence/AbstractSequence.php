@@ -57,7 +57,7 @@ class AbstractSequence
     /**
      * @param ArrayCollection $data
      */
-    public function setData($data)
+    public function setData(ArrayCollection $data)
     {
         $this->data = $data;
     }

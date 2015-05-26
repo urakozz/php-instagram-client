@@ -48,7 +48,7 @@ class Images
     /**
      * @param ImageDetails $thumbnail
      */
-    public function setThumbnail($thumbnail)
+    public function setThumbnail(ImageDetails $thumbnail)
     {
         $this->thumbnail = $thumbnail;
     }
@@ -64,7 +64,7 @@ class Images
     /**
      * @param ImageDetails $lowResolution
      */
-    public function setLowResolution($lowResolution)
+    public function setLowResolution(ImageDetails $lowResolution)
     {
         $this->lowResolution = $lowResolution;
     }
@@ -80,7 +80,7 @@ class Images
     /**
      * @param ImageDetails $standardResolution
      */
-    public function setStandardResolution($standardResolution)
+    public function setStandardResolution(ImageDetails $standardResolution)
     {
         $this->standardResolution = $standardResolution;
     }
