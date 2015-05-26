@@ -107,7 +107,7 @@ class Caption
     /**
      * @param UserInfo $from
      */
-    public function setFrom($from)
+    public function setFrom(UserInfo $from)
     {
         $this->from = $from;
     }

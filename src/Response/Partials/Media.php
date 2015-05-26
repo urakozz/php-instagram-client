@@ -159,7 +159,7 @@ class Media
     /**
      * @param Comments $comments
      */
-    public function setComments($comments)
+    public function setComments(Comments $comments)
     {
         $this->comments = $comments;
     }
@@ -175,7 +175,7 @@ class Media
     /**
      * @param Likes $likes
      */
-    public function setLikes($likes)
+    public function setLikes(Likes $likes)
     {
         $this->likes = $likes;
     }
@@ -239,7 +239,7 @@ class Media
     /**
      * @param Images $images
      */
-    public function setImages($images)
+    public function setImages(Images $images)
     {
         $this->images = $images;
     }
@@ -255,7 +255,7 @@ class Media
     /**
      * @param UserInfo[]|ArrayCollection $userInPhoto
      */
-    public function setUserInPhoto($userInPhoto)
+    public function setUserInPhoto(ArrayCollection $userInPhoto)
     {
         $this->userInPhoto = $userInPhoto;
     }
@@ -271,7 +271,7 @@ class Media
     /**
      * @param Caption $caption
      */
-    public function setCaption($caption)
+    public function setCaption(Caption $caption)
     {
         $this->caption = $caption;
     }
@@ -303,7 +303,7 @@ class Media
     /**
      * @param UserInfo $user
      */
-    public function setUser($user)
+    public function setUser(UserInfo $user)
     {
         $this->user = $user;
     }
