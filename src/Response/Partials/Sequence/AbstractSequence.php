@@ -16,7 +16,7 @@ namespace Instagram\Response\Partials\Sequence;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation\Type;
 
-class AbstractSequence
+abstract class AbstractSequence
 {
 
     /**

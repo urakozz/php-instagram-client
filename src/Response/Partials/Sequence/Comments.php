@@ -23,7 +23,7 @@ use JMS\Serializer\Annotation\Type;
  * Class Comments
  *
  * @package Instagram\Response\Partials\Sequence
- * @method Caption[] getData()
+ * @method Caption[]|ArrayCollection getData()
  */
 class Comments extends AbstractSequence
 {

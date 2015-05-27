@@ -8,6 +8,7 @@
 
 namespace Instagram\Tests\Response;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\Partials\Caption;
 use Instagram\Response\Partials\Image\Images;
 use Instagram\Response\Partials\Media;
@@ -38,7 +39,7 @@ class MediaTest extends \PHPUnit_Framework_TestCase {
         $response->setCreatedTime('11.11.11 12:12:12');
         $response->setLink('string3');
         $response->setImages($images);
-        $response->setUserInPhoto(array('img1.jpg','img2.jpg','img3.jpg'));
+        $response->setUserInPhoto(new ArrayCollection(array('img1.jpg','img2.jpg','img3.jpg')));
         $response->setCaption($caption);
         $response->setUserHasLiked(true);
         $response->setUser($user);
@@ -53,7 +54,7 @@ class MediaTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('11.11.11 12:12:12', $response->getCreatedTime());
         $this->assertEquals('string3', $response->getLink());
         $this->assertEquals($images, $response->getImages());
-        $this->assertEquals(array('img1.jpg','img2.jpg','img3.jpg'), $response->getUserInPhoto());
+        $this->assertSame(array('img1.jpg','img2.jpg','img3.jpg'), $response->getUserInPhoto()->toArray());
         $this->assertEquals($caption, $response->getCaption());
         $this->assertEquals($user, $response->getUser());
 
