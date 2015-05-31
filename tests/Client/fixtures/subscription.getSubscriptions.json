@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "code": 200
+  },
+  "data": [
+    {
+      "object": "user",
+      "object_id": null,
+      "aspect": "media",
+      "callback_url": "http:\/\/staging.i.urakozz.me\/callback\/users",
+      "type": "subscription",
+      "id": "18315139"
+    }
+  ]
+}

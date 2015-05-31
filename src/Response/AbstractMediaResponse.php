@@ -27,7 +27,7 @@ use JMS\Serializer\Annotation\Type;
  * @license   MIT
  * @link      https://github.com/urakozz/php-instagram-client
  */
-class AbstractMediaResponse extends AbstractInstagramResponse
+abstract class AbstractMediaResponse extends AbstractInstagramResponse
 {
 
     /**
@@ -50,15 +50,12 @@ class AbstractMediaResponse extends AbstractInstagramResponse
     /**
      * @return ArrayCollection
      */
-    public function getData()
-    {
-        return $this->data;
-    }
+    abstract public function getData();
 
     /**
      * @param ArrayCollection $data
      */
-    public function setData($data)
+    public function setData(ArrayCollection $data)
     {
         $this->data = $data;
     }
