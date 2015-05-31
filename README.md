@@ -50,7 +50,7 @@ $response = $client->call(new GetSubscriptionsRequest());
 #### Handle subscription request from the Instagram
 
 ```php
-$config  = new AuthConfig("d2cbeff4792242f7b49ea65f984a1237", "f95c2c4cd80348258685d04b68ce0b64", "http://localhost/auth");
+$config  = new AuthConfig(env("I_CLIENT_ID"), env("I_CLIENT_SECRET"), "http://localhost/auth");
 $reactor = new SubscriptionReactor($config);
 $reactor->registerCallback("user", function(RealTimeSubscription $subscription){
     // Do something
