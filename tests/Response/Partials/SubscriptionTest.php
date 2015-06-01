@@ -24,12 +24,14 @@ class SubscriptionTest extends \PHPUnit_Framework_TestCase{
         $response->setId("ID123");
         $response->setAspect("aspect");
         $response->setObject("object");
+        $response->setObjectId(123);
         $response->setType("type");
         $response->setCallbackUrl("/path/to");
 
         $this->assertEquals("ID123", $response->getId());
         $this->assertEquals("aspect", $response->getAspect());
         $this->assertEquals("object", $response->getObject());
+        $this->assertEquals(123, $response->getObjectId());
         $this->assertEquals("type", $response->getType());
         $this->assertEquals("/path/to", $response->getCallbackUrl());
 
