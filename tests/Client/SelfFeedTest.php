@@ -55,5 +55,8 @@ class SelfFeedTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals("984773301862532202_327064992", $response->getPagination()->getNextMaxId());
         $this->assertContains("984773301862532202_327064992", $response->getPagination()->getNextUrl());
+
+        $media = $response->getData()->first();
+        $this->assertEquals("38615182", $media->getUser()->getId());
     }
 }

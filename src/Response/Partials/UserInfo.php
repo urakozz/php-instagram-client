@@ -13,6 +13,7 @@
 namespace Instagram\Response\Partials;
 
 
+use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
 
 class UserInfo {
@@ -20,8 +21,9 @@ class UserInfo {
     /**
      * @var string
      * @Type("string")
+     * @SerializedName("id")
      */
-    protected $id;
+    protected $userId;
 
     /**
      * @var string
@@ -58,15 +60,15 @@ class UserInfo {
      */
     public function getId()
     {
-        return $this->id;
+        return $this->userId;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $userId
      */
-    public function setId($id)
+    public function setId($userId)
     {
-        $this->id = $id;
+        $this->userId = $userId;
     }
 
     /**

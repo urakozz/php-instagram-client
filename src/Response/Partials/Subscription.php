@@ -2,6 +2,7 @@
 
 namespace Instagram\Response\Partials;
 
+use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
 
 class Subscription
@@ -9,8 +10,9 @@ class Subscription
     /**
      * @var string
      * @Type("string")
+     * @SerializedName("id")
      */
-    protected $id;
+    protected $subscriptionId;
 
     /**
      * @var string
@@ -47,15 +49,15 @@ class Subscription
      */
     public function getId()
     {
-        return $this->id;
+        return $this->subscriptionId;
     }
 
     /**
-     * @param string $id
+     * @param string $subscriptionId
      */
-    public function setId($id)
+    public function setId($subscriptionId)
     {
-        $this->id = $id;
+        $this->subscriptionId = $subscriptionId;
     }
 
     /**
