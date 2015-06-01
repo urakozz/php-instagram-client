@@ -10,7 +10,7 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Tests\Subscription;
+namespace Instagram\Tests\Client;
 
 
 use Instagram\Client\Config\AuthConfig;

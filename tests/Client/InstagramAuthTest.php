@@ -66,11 +66,35 @@ class InstagramAuthTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($resp->getAccessToken());
     }
 
+    public function testTokenErrorException()
+    {
+        $stream = new \GuzzleHttp\Stream\BufferStream();
+        $stream->write($this->errorJson);
+        $this->client->shouldReceive('send')->andReturnUsing(function(RequestInterface $request)use($stream){
+            $response = new \GuzzleHttp\Message\Response(400);
+            $response->setBody($stream);
+            throw new RequestException($request, $request, $response);
+        });
+
+        $auth = new InstagramAuth($this->config, $this->client);
+        $resp = $auth->retrieveOAuthToken(md5("random"));
+
+        $this->assertInstanceOf(OAuthResponse::class, $resp);
+
+        $this->assertFalse($resp->isOk());
+        $this->assertEquals(400, $resp->getCode());
+        $this->assertEquals("OAuthException", $resp->getErrorType());
+        $this->assertEquals("No matching code found.", $resp->getErrorMessage());
+
+        $this->assertNull($resp->getUser());
+        $this->assertNull($resp->getAccessToken());
+    }
+
     public function testTokenSuccess()
     {
         $stream = new \GuzzleHttp\Stream\BufferStream();
         $stream->write($this->successJson);
-        $this->client->shouldReceive('send')->andReturn(new \GuzzleHttp\Message\Response(400, [], $stream));
+        $this->client->shouldReceive('send')->andReturn(new \GuzzleHttp\Message\Response(200, [], $stream));
 
         $auth = new InstagramAuth($this->config, $this->client);
         $resp = $auth->retrieveOAuthToken(md5("random"));

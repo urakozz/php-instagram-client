@@ -28,6 +28,12 @@ class Subscription
      * @var string
      * @Type("string")
      */
+    protected $objectId;
+
+    /**
+     * @var string
+     * @Type("string")
+     */
     protected $aspect;
 
     /**
@@ -83,6 +89,24 @@ class Subscription
     {
         $this->object = $object;
     }
+
+    /**
+     * @return string
+     */
+    public function getObjectId()
+    {
+        return $this->objectId;
+    }
+
+    /**
+     * @param string $objectId
+     */
+    public function setObjectId($objectId)
+    {
+        $this->objectId = $objectId;
+    }
+
+
 
     /**
      * @return string

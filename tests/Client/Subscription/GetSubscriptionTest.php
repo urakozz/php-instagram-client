@@ -14,8 +14,10 @@ namespace Instagram\Tests\Client\Subscription;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Instagram\Client\Config\AuthConfig;
 use Instagram\Client\Config\TokenConfig;
 use Instagram\Client\InstagramClient;
+use Instagram\Client\InstagramClientUnauthorized;
 use Instagram\Request\Subscription\GetSubscriptionsRequest;
 use Instagram\Response\Partials\Meta;
 use Instagram\Response\Partials\Pagination;
@@ -29,21 +31,22 @@ class GetSubscriptionTest extends \PHPUnit_Framework_TestCase
      * @var \Mockery\MockInterface | \GuzzleHttp\Client
      */
     protected $client;
+    protected $config;
 
     public function setUp()
     {
         $this->client = \Mockery::mock('GuzzleHttp\Client[send]');
+        $this->config = new AuthConfig("d2cbeff4792242f7b49ea65f984a1237", "f95c2c4cd80348258685d04b68ce0b64", "http://192.168.50.50/auth");
 
     }
 
-    public function testMediaResponse()
+    public function testGetSubscriptionsResponse()
     {
         $stream = new \GuzzleHttp\Stream\BufferStream();
         $stream->write(file_get_contents(__DIR__."/../fixtures/subscription.getSubscriptions.json"));
         $this->client->shouldReceive('send')->andReturn(new \GuzzleHttp\Message\Response(200, [], $stream));
 
-        $token = "228952246.d2cbeff.256ed5da07084b1cb49d089d0e210a82";
-        $client = new InstagramClient(new TokenConfig($token), $this->client);
+        $client = new InstagramClientUnauthorized($this->config, $this->client);
         /** @var GetSubscriptionsResponse $response */
         $response = $client->call(new GetSubscriptionsRequest());
 

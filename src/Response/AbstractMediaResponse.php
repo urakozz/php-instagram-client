@@ -117,6 +117,6 @@ abstract class AbstractMediaResponse extends AbstractInstagramResponse
      */
     public function getErrorMessage()
     {
-        return $this->getMeta()->getErrorType();
+        return $this->getMeta()->getErrorMessage();
     }
 }

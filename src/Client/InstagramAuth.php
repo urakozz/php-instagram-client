@@ -32,34 +32,8 @@ use Instagram\Serializer\JMSSerializer;
  * @license   MIT
  * @link      https://github.com/urakozz/php-instagram-client
  */
-class InstagramAuth
+class InstagramAuth extends InstagramClientUnauthorized
 {
-
-    /**
-     * @var AuthConfig
-     */
-    protected $config;
-
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
-
-    /**
-     * @var InstagramSerializerInterface
-     */
-    protected $serializer;
-
-    /**
-     * @param AuthConfig $config
-     * @param ClientInterface $client
-     */
-    public function __construct(AuthConfig $config, ClientInterface $client = null)
-    {
-        $this->config     = $config;
-        $this->client     = $client ?: new Client();
-        $this->serializer = new JMSSerializer();
-    }
 
     /**
      * Desc
@@ -80,20 +54,8 @@ class InstagramAuth
      */
     public function retrieveOAuthToken($code)
     {
-        $attributes    = $this->getTokenAttributes($code);
-        $request       = new OAuthRequest($attributes);
-        $guzzleRequest = $request->getRequest($this->client);
-        try {
-            $response = $this->client->send($guzzleRequest);
-        } catch (RequestException $e) {
-            if ($e->getCode() === 400) {
-                $response = $e->getResponse();
-            } else {
-                throw $e;
-            }
-        }
-        $res = $this->serializer->deserialize($response->getBody()->getContents(), $request->getResponsePrototype());
-        return $res;
+        $attributes = $this->getTokenAttributes($code);
+        return parent::call(new OAuthRequest($attributes));
     }
 
     /**
@@ -119,12 +81,10 @@ class InstagramAuth
      */
     protected function getTokenAttributes($code)
     {
-        $attributes                  = [];
-        $attributes['client_id']     = $this->config->getKey();
-        $attributes['grant_type']    = 'authorization_code';
-        $attributes['redirect_uri']  = $this->config->getRedirectUrl();
-        $attributes['client_secret'] = $this->config->getSecret();
-        $attributes['code']          = $code;
+        $attributes                 = [];
+        $attributes['grant_type']   = 'authorization_code';
+        $attributes['redirect_uri'] = $this->config->getRedirectUrl();
+        $attributes['code']         = $code;
         return $attributes;
     }
 }

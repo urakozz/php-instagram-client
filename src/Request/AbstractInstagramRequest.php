@@ -35,11 +35,34 @@ abstract class AbstractInstagramRequest
      */
     protected $endPoint = "https://api.instagram.com/v1";
 
+    /** @var string */
     protected $token;
+
+    /** @var string */
+    protected $clientId;
+
+    /** @var string */
+    protected $clientSecret;
 
     public function setToken($token)
     {
         $this->token = $token;
+    }
+
+    /**
+     * @param string $clientId
+     */
+    public function setClientId($clientId)
+    {
+        $this->clientId = $clientId;
+    }
+
+    /**
+     * @param string $clientSecret
+     */
+    public function setClientSecret($clientSecret)
+    {
+        $this->clientSecret = $clientSecret;
     }
 
     /**
@@ -100,6 +123,12 @@ abstract class AbstractInstagramRequest
         $attributes = (array) $this->getAttributes();
         if ($this->token) {
             $attributes['access_token'] = $this->token;
+        }
+        if ($this->clientId) {
+            $attributes['client_id'] = $this->clientId;
+        }
+        if ($this->clientId) {
+            $attributes['client_secret'] = $this->clientSecret;
         }
         return $attributes;
     }
