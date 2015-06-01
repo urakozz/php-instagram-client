@@ -15,7 +15,7 @@ namespace Instagram\Tests\Subscription;
 
 use Instagram\Client\Config\AuthConfig;
 use Instagram\Response\Subscription\RealTimeSubscription;
-use Instagram\Subscription\SubscriptionReactor;
+use Instagram\Client\SubscriptionReactor;
 
 class SubscriptionReactorTest extends \PHPUnit_Framework_TestCase
 {
