@@ -71,6 +71,7 @@ class InstagramClientUnauthorized  implements InstagramClientInterface{
             }
         }
         $json = $response->getBody()->getContents();
+        echo $json;
         $res  = $this->serializer->deserialize($json, $request->getResponsePrototype());
         return $res;
     }

@@ -40,17 +40,13 @@ class CreateSubscriptionTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function testCreateSubscriptionError()
+    public function testCreateSubscriptionSuccess()
     {
         $stream = new \GuzzleHttp\Stream\BufferStream();
-        $stream->write($this->jsonError);
-        $this->client->shouldReceive('send')->andReturnUsing(function(RequestInterface $request)use($stream){
-            $response = new \GuzzleHttp\Message\Response(400);
-            $response->setBody($stream);
-            throw new RequestException($request, $request, $response);
-        });
-//
-        $client = new InstagramClientUnauthorized($this->config);
+        $stream->write($this->jsonSuccess);
+        $this->client->shouldReceive('send')->andReturn(new \GuzzleHttp\Message\Response(200, [], $stream));
+
+        $client = new InstagramClientUnauthorized($this->config, $this->client);
         /** @var CreateSubscriptionResponse $response */
         $response = $client->call(new CreateSubscriptionRequest([
             'object' => 'user',
@@ -65,6 +61,29 @@ class CreateSubscriptionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("media", $response->getData()->getAspect());
         $this->assertEquals("http://staging.i.urakozz.me/callback/users", $response->getData()->getCallbackUrl());
         $this->assertEquals("18423900", $response->getData()->getId());
+
+    }
+
+    public function testCreateSubscriptionError()
+    {
+        $stream = new \GuzzleHttp\Stream\BufferStream();
+        $stream->write($this->jsonError);
+        $this->client->shouldReceive('send')->andReturnUsing(function(RequestInterface $request)use($stream){
+            $response = new \GuzzleHttp\Message\Response(400);
+            $response->setBody($stream);
+            throw new RequestException($request, $request, $response);
+        });
+
+        $client = new InstagramClientUnauthorized($this->config, $this->client);
+        /** @var CreateSubscriptionResponse $response */
+        $response = $client->call(new CreateSubscriptionRequest([
+            'object' => 'user',
+            'aspect' => 'media',
+            'callback_url' => 'http://staging.i.urakozz.me/callback/users'
+        ]));
+        $this->assertInstanceOf(CreateSubscriptionResponse::class, $response);
+        $this->assertEquals(400, $response->getCode());
+        $this->assertNull($response->getData());
 
     }
 }

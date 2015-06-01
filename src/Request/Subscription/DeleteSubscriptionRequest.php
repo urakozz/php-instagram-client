@@ -15,10 +15,9 @@ namespace Instagram\Request\Subscription;
 
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Subscription\CreateSubscriptionResponse;
+use Instagram\Response\Subscription\DeleteSubscriptionResponse;
 
-class CreateSubscriptionRequest extends AbstractInstagramRequest
-{
+class DeleteSubscriptionRequest extends AbstractInstagramRequest{
 
     /**
      * Get Request Method (GET|POST|DELETE)
@@ -27,7 +26,7 @@ class CreateSubscriptionRequest extends AbstractInstagramRequest
      */
     public function getMethod()
     {
-        return "POST";
+        return "DELETE";
     }
 
     /**
@@ -57,6 +56,6 @@ class CreateSubscriptionRequest extends AbstractInstagramRequest
      */
     public function getResponsePrototype()
     {
-        return new CreateSubscriptionResponse();
+        return new DeleteSubscriptionResponse();
     }
 }

@@ -38,19 +38,6 @@ class OAuthRequest extends AbstractInstagramRequest
     protected $endPoint = "https://api.instagram.com/oauth";
 
     /**
-     * @var array
-     */
-    protected $attributes = [];
-
-    /**
-     * @param array $attributes
-     */
-    public function __construct(array $attributes)
-    {
-        $this->attributes = $attributes;
-    }
-
-    /**
      * Get Request Method (GET|POST|DELETE)
      *
      * @return string

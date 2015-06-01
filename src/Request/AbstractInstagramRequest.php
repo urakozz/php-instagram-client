@@ -44,6 +44,14 @@ abstract class AbstractInstagramRequest
     /** @var string */
     protected $clientSecret;
 
+    /** @var array */
+    protected $attributes = [];
+
+    public function __construct(array $attributes = [])
+    {
+        $this->attributes = $attributes;
+    }
+
     public function setToken($token)
     {
         $this->token = $token;
