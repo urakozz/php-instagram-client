@@ -37,13 +37,58 @@ $token  = $client->retrieveOAuthToken($_GET['code']);
 
 ### Subscriptions
 
+#### Create Subscription
+
+**Step 1**
+
+Create public controller and action, which would handle GET request. Instagramm will call it during creating subscription:
+```php
+class SomeController{
+    function actionCallbackGet{
+        echo $_GET['hub.challenge'];
+    }
+}
+```
+
+**Step 1**
+Create Subscription:
+```php
+$client = new InstagramClientUnauthorized(new AuthConfig(env("I_CLIENT_ID"), env("I_CLIENT_SECRET"), "http://localhost/auth"));
+
+/** @var CreateSubscriptionResponse $response */
+$response = $client->call(new CreateSubscriptionRequest([
+    'object' => 'user',
+    'aspect' => 'media',
+    'callback_url' => 'http://yoursite.me/some/callback'
+]));
+
+```
+
 #### Get subscriptions
 
 ```php
 
-$client = new InstagramClient(new TokenConfig($token));
+$client = new InstagramClientUnauthorized(new AuthConfig(env("I_CLIENT_ID"), env("I_CLIENT_SECRET"), "http://localhost/auth"));
 /** @var GetSubscriptionsResponse $response */
 $response = $client->call(new GetSubscriptionsRequest());
+
+```
+
+#### Delete subscription(s)
+
+```php
+
+$client = new InstagramClientUnauthorized(new AuthConfig(env("I_CLIENT_ID"), env("I_CLIENT_SECRET"), "http://localhost/auth"));
+/** @var DeleteSubscriptionsResponse $response */
+$response = $client->call(new DeleteSubscriptionsRequest([
+    'object'=>'user'
+]));
+$response = $client->call(new DeleteSubscriptionsRequest([
+    'object'=>'all'
+]));
+$response = $client->call(new DeleteSubscriptionsRequest([
+    'id'=>1
+]));
 
 ```
 
