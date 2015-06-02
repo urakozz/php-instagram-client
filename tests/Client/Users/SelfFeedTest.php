@@ -2,14 +2,14 @@
 /**
  * PHP Version 5
  *
- * @package   
+ * @package
  * @author    "Yury Kozyrev" <urakozz@gmail.com>
- * @copyright 2015 "Yury Kozyrev" 
+ * @copyright 2015 "Yury Kozyrev"
  * @license   MIT
  * @link      https://github.com/urakozz/php-instagram-client
  */
 
-namespace Instagram\Tests;
+namespace Instagram\Tests\Client\Users;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -33,13 +33,27 @@ class SelfFeedTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testSelfFeedRequest()
+    {
+        $request = new SelfFeedRequest();
+        $request->setCount(100);
+        $request->setMaxId('123qwe');
+        $request->setMinId('100qwe');
+
+        $this->assertSame([
+            'count' => 100,
+            'max_id' => '123qwe',
+            'min_id' => '100qwe'
+        ], $request->getAttributes());
+    }
+
     public function testMediaResponse()
     {
         $stream = new \GuzzleHttp\Stream\BufferStream();
-        $stream->write(file_get_contents(__DIR__."/fixtures/usersSelfFeed.json"));
+        $stream->write(file_get_contents(__DIR__ . "/../fixtures/usersSelfFeed.json"));
         $this->client->shouldReceive('send')->andReturn(new \GuzzleHttp\Message\Response(200, [], $stream));
 
-        $token = "228952246.d2cbeff.256ed5da07084b1cb49d089d0e210a82";
+        $token  = "228952246.d2cbeff.256ed5da07084b1cb49d089d0e210a82";
         $client = new InstagramClient(new TokenConfig($token), $this->client);
         /** @var SelfFeedResponse $response */
         $response = $client->call(new SelfFeedRequest());

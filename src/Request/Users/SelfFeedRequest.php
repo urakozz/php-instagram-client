@@ -19,6 +19,21 @@ use Instagram\Response\Media\Users\SelfFeedResponse;
 class SelfFeedRequest extends AbstractInstagramRequest
 {
 
+    public function setCount($count)
+    {
+        $this['count'] = $count;
+    }
+
+    public function setMaxId($maxId)
+    {
+        $this['max_id'] = $maxId;
+    }
+
+    public function setMinId($minId)
+    {
+        $this['min_id'] = $minId;
+    }
+
     /**
      * Get Request Method (GET|POST|DELETE)
      *
