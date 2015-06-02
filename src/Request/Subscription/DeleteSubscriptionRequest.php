@@ -63,13 +63,13 @@ class DeleteSubscriptionRequest extends AbstractInstagramRequest
     }
 
     /**
-     * Get Request Attributes
+     * Get required attributes
      *
-     * @return array
+     * @return mixed
      */
-    public function getAttributes()
+    public function getRequiredAttributes()
     {
-        return $this->attributes;
+        return [];
     }
 
     /**
