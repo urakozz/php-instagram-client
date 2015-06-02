@@ -30,13 +30,59 @@ class CreateSubscriptionTest extends \PHPUnit_Framework_TestCase
     protected $config;
 
     protected $jsonSuccess = '{"meta":{"code":200},"data":{"object":"user","object_id":null,"aspect":"media","callback_url":"http:\/\/staging.i.urakozz.me\/callback\/users","type":"subscription","id":"18423900"}}';
-    protected $jsonError = '{"meta":{"error_type":"APISubscriptionError","code":400,"error_message":"Invalid response"}}';
+    protected $jsonError   = '{"meta":{"error_type":"APISubscriptionError","code":400,"error_message":"Invalid response"}}';
 
     public function setUp()
     {
         $this->client = \Mockery::mock('GuzzleHttp\Client[send]');
         $this->config = new AuthConfig("d2cbeff4792242f7b49ea65f984a1237", "f95c2c4cd80348258685d04b68ce0b64", "http://192.168.50.50/auth");
 
+
+    }
+
+    public function testCreateSubscriptionRequest()
+    {
+        $request = new CreateSubscriptionRequest();
+        $request->setObject('geography');
+        $request->setAspect('media');
+        $request->setLat(35.657872);
+        $request->setLng(139.70232);
+        $request->setCallbackUrl("http://localhost");
+        $request->setVerifyToken('token');
+        $this->assertSame([
+            'object' => 'geography',
+            'aspect' => 'media',
+            'lat' => 35.657872,
+            'lng' => 139.70232,
+            'callback_url' => 'http://localhost',
+            'verify_token' => 'token',
+        ], $request->getAttributes());
+
+        $request = new CreateSubscriptionRequest();
+        $request->setObject('tag');
+        $request->setObjectId('nofilter');
+        $request->setAspect('media');
+        $request->setCallbackUrl("http://localhost");
+        $request->setVerifyToken('token');
+        $this->assertSame([
+            'object' => 'tag',
+            'object_id' => 'nofilter',
+            'aspect' => 'media',
+            'callback_url' => 'http://localhost',
+            'verify_token' => 'token',
+        ], $request->getAttributes());
+
+        $request = new CreateSubscriptionRequest([
+            'object' => 'user',
+            'aspect' => 'media',
+            'callback_url' => 'http://staging.i.urakozz.me/callback/users'
+        ]);
+
+        $this->assertSame([
+            'object' => 'user',
+            'aspect' => 'media',
+            'callback_url' => 'http://staging.i.urakozz.me/callback/users'
+        ], $request->getAttributes());
 
     }
 
@@ -68,7 +114,7 @@ class CreateSubscriptionTest extends \PHPUnit_Framework_TestCase
     {
         $stream = new \GuzzleHttp\Stream\BufferStream();
         $stream->write($this->jsonError);
-        $this->client->shouldReceive('send')->andReturnUsing(function(RequestInterface $request)use($stream){
+        $this->client->shouldReceive('send')->andReturnUsing(function (RequestInterface $request) use ($stream) {
             $response = new \GuzzleHttp\Message\Response(400);
             $response->setBody($stream);
             throw new RequestException($request, $request, $response);

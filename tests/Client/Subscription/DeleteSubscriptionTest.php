@@ -34,6 +34,20 @@ class DeleteSubscriptionTest extends \PHPUnit_Framework_TestCase
         $this->config = new AuthConfig("d2cbeff4792242f7b49ea65f984a1237", "f95c2c4cd80348258685d04b68ce0b64", "http://192.168.50.50/auth");
     }
 
+    public function testDeleteSubscriptionRequest()
+    {
+        $request = new DeleteSubscriptionRequest([
+            'object' => 'all',
+        ]);
+        $this->assertSame(['object'=>'all'], $request->getAttributes());
+
+        $request = new DeleteSubscriptionRequest();
+        $request->setObject('all');
+        $request->setId('123');
+        $this->assertSame(['object'=>'all', 'id'=>'123'], $request->getAttributes());
+
+    }
+
     public function testDeleteSubscriptionError()
     {
         $stream = new \GuzzleHttp\Stream\BufferStream();

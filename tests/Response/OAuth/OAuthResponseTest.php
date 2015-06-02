@@ -9,7 +9,7 @@
  * @link      https://github.com/urakozz/php-instagram-client
  */
 
-namespace Instagram\Tests\Response;
+namespace Instagram\Tests\Response\OAuth;
 
 
 use Instagram\Response\AbstractInstagramResponse;

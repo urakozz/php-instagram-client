@@ -17,7 +17,30 @@ use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Subscription\DeleteSubscriptionResponse;
 
-class DeleteSubscriptionRequest extends AbstractInstagramRequest{
+class DeleteSubscriptionRequest extends AbstractInstagramRequest
+{
+
+    /**
+     * Set Id
+     *
+     * @param $id
+     * @return void
+     */
+    public function setId($id)
+    {
+        $this['id'] = $id;
+    }
+
+    /**
+     * Set object
+     *
+     * @param $object
+     * @return void
+     */
+    public function setObject($object)
+    {
+        $this['object'] = $object;
+    }
 
     /**
      * Get Request Method (GET|POST|DELETE)

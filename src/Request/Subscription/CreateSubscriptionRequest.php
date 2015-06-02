@@ -20,6 +20,46 @@ use Instagram\Response\Subscription\CreateSubscriptionResponse;
 class CreateSubscriptionRequest extends AbstractInstagramRequest
 {
 
+    public function setCallbackUrl($callbackUrl)
+    {
+        $this['callback_url'] = $callbackUrl;
+    }
+
+    public function setObject($object)
+    {
+        $this['object'] = $object;
+    }
+
+    public function setObjectId($objectId)
+    {
+        $this['object_id'] = $objectId;
+    }
+
+    public function setAspect($media)
+    {
+        $this['aspect'] = $media;
+    }
+
+    public function setLat($lat)
+    {
+        $this['lat'] = $lat;
+    }
+
+    public function setLng($lng)
+    {
+        $this['lng'] = $lng;
+    }
+
+    public function setRadius($radius)
+    {
+        $this['radius'] = $radius;
+    }
+
+    public function setVerifyToken($token)
+    {
+        $this['verify_token'] = $token;
+    }
+
     /**
      * Get Request Method (GET|POST|DELETE)
      *
