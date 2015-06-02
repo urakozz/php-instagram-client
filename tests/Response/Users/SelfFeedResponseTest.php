@@ -9,13 +9,13 @@
  * @link      https://github.com/urakozz/php-instagram-client
  */
 
-namespace Instagram\Tests\Response\Media\Users;
+namespace Instagram\Tests\Response\Users;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\AbstractMediaResponse;
-use Instagram\Response\Media\Users\SelfFeedResponse;
+use Instagram\Response\Users\SelfFeedResponse;
 use Instagram\Response\Partials\Meta;
 use Instagram\Response\Partials\Pagination;
 

@@ -13,6 +13,7 @@
 namespace Instagram\Response\Partials;
 
 
+use Instagram\Response\Partials\User\UserCounts;
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
 
@@ -54,6 +55,12 @@ class UserInfo {
      * @Type("string")
      */
     protected $website;
+
+    /**
+     * @var UserCounts
+     * @Type("Instagram\Response\Partials\User\UserCounts")
+     */
+    protected $counts;
 
     /**
      * @return mixed
@@ -149,6 +156,11 @@ class UserInfo {
     public function setWebsite($website)
     {
         $this->website = $website;
+    }
+
+    public function getCounts()
+    {
+        return $this->counts;
     }
 
 

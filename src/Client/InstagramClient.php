@@ -79,7 +79,8 @@ class InstagramClient implements InstagramClientInterface
             }
         }
         $json = $response->getBody()->getContents();
-//        file_put_contents("tests/fixtures/usersSelfFeed.json", json_encode(json_decode($json),JSON_PRETTY_PRINT));
+//        echo json_encode(json_decode($json),JSON_PRETTY_PRINT);
+//        file_put_contents("tests/Client/fixtures/users.user.json", json_encode(json_decode($json),JSON_PRETTY_PRINT));
         $res = $this->serializer->deserialize($json, $request->getResponsePrototype());
         return $res;
     }

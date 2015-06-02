@@ -1,0 +1,18 @@
+{
+    "meta": {
+        "code": 200
+    },
+    "data": {
+        "username": "urakozz",
+        "bio": "Senior Software Engineer, Home24 AG",
+        "website": "http:\/\/home24.de",
+        "profile_picture": "https:\/\/instagramimages-a.akamaihd.net\/profiles\/profile_228952246_75sq_1398293168.jpg",
+        "full_name": "Yury Kozyrev",
+        "counts": {
+            "media": 177,
+            "followed_by": 71,
+            "follows": 56
+        },
+        "id": "228952246"
+    }
+}

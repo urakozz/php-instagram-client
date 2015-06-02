@@ -1,6 +1,6 @@
 <?php
 
-namespace Instagram\Response\Media\Users;
+namespace Instagram\Response\Users;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\AbstractMediaResponse;

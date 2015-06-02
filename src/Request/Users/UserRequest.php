@@ -2,11 +2,12 @@
 /**
  * PHP Version 5
  *
- * @package
- * @author    "Yury Kozyrev" <urakozz@gmail.com>
- * @copyright 2015 "Yury Kozyrev"
- * @license   MIT
- * @link      https://github.com/urakozz/php-instagram-client
+ * @category  H24
+ * @package   H24
+ * @author    "Yury Kozyrev" <yury.kozyrev@home24.de>
+ * @copyright 2015 Home24 GmbH
+ * @license   Proprietary license.
+ * @link      http://www.home24.de
  */
 
 namespace Instagram\Request\Users;
@@ -14,24 +15,14 @@ namespace Instagram\Request\Users;
 
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Users\SelfFeedResponse;
+use Instagram\Response\Users\UserResponse;
 
-class SelfFeedRequest extends AbstractInstagramRequest
+class UserRequest extends AbstractInstagramRequest
 {
 
-    public function setCount($count)
+    public function setUserId($userId)
     {
-        $this['count'] = $count;
-    }
-
-    public function setMaxId($maxId)
-    {
-        $this['max_id'] = $maxId;
-    }
-
-    public function setMinId($minId)
-    {
-        $this['min_id'] = $minId;
+        $this['user_id'] = $userId;
     }
 
     /**
@@ -41,7 +32,7 @@ class SelfFeedRequest extends AbstractInstagramRequest
      */
     public function getMethod()
     {
-        return "GET";
+        return 'GET';
     }
 
     /**
@@ -51,7 +42,7 @@ class SelfFeedRequest extends AbstractInstagramRequest
      */
     public function getUrl()
     {
-        return "/users/self/feed";
+        return '/users/{user_id}';
     }
 
     /**
@@ -61,7 +52,7 @@ class SelfFeedRequest extends AbstractInstagramRequest
      */
     public function getRequiredAttributes()
     {
-        return [];
+        return ['user_id'];
     }
 
     /**
@@ -71,6 +62,6 @@ class SelfFeedRequest extends AbstractInstagramRequest
      */
     public function getResponsePrototype()
     {
-        return new SelfFeedResponse();
+        return new UserResponse();
     }
 }

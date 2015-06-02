@@ -19,7 +19,7 @@ use GuzzleHttp\Message\RequestInterface;
 use Instagram\Client\Config\TokenConfig;
 use Instagram\Client\InstagramClient;
 use Instagram\Request\Users\SelfFeedRequest;
-use Instagram\Response\Media\Users\SelfFeedResponse;
+use Instagram\Response\Users\SelfFeedResponse;
 use Instagram\Response\Partials\Meta;
 use Instagram\Response\Partials\Pagination;
 

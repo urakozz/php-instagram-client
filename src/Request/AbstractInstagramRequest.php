@@ -122,9 +122,12 @@ abstract class AbstractInstagramRequest implements \ArrayAccess
      */
     public function getRequest(ClientInterface $client)
     {
+        $attributes = $this->collectAttributes();
+        $this->checkAttributes($attributes);
+
         $options       = [];
         $key           = "POST" === $this->getMethod() ? "body" : "query";
-        $options[$key] = $this->collectAttributes();
+        $options[$key] = $attributes;
 
         return $client->createRequest($this->getMethod(), $this->getAbsoluteUrl(), $options);
     }
@@ -136,21 +139,24 @@ abstract class AbstractInstagramRequest implements \ArrayAccess
      */
     protected function getAbsoluteUrl()
     {
-        return $this->endPoint . $this->getUrl();
+        $url = $this->getUrl();
+        $url = preg_replace_callback('/{([\w\_]+)}/u', function ($matches) {
+            return $this->attributes[$matches[1]];
+        }, $url);
+        return $this->endPoint . $url;
     }
 
     protected function collectAttributes()
     {
         $attributes = (array) $this->getAttributes();
-        $this->checkAttributes($attributes);
         $attributes = $this->appendAuthAttributes($attributes);
         return $attributes;
     }
 
     protected function checkAttributes(array $attributes)
     {
-        if($missed = array_diff_key(array_flip($this->getRequiredAttributes()), $attributes)){
-            throw new \InvalidArgumentException("Required arguments missed: ". implode(", ", array_keys($missed)));
+        if ($missed = array_diff_key(array_flip($this->getRequiredAttributes()), $attributes)) {
+            throw new \InvalidArgumentException("Required arguments missed: " . implode(", ", array_keys($missed)));
         }
     }
 

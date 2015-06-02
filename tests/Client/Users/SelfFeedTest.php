@@ -18,7 +18,7 @@ use Instagram\Client\InstagramClient;
 use Instagram\Request\Users\SelfFeedRequest;
 use Instagram\Response\Partials\Meta;
 use Instagram\Response\Partials\Pagination;
-use Instagram\Response\Media\Users\SelfFeedResponse;
+use Instagram\Response\Users\SelfFeedResponse;
 
 class SelfFeedTest extends \PHPUnit_Framework_TestCase
 {
