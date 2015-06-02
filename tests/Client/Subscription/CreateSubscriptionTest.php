@@ -47,6 +47,7 @@ class CreateSubscriptionTest extends \PHPUnit_Framework_TestCase
         $request->setAspect('media');
         $request->setLat(35.657872);
         $request->setLng(139.70232);
+        $request->setRadius(100);
         $request->setCallbackUrl("http://localhost");
         $request->setVerifyToken('token');
         $this->assertSame([
@@ -54,6 +55,7 @@ class CreateSubscriptionTest extends \PHPUnit_Framework_TestCase
             'aspect' => 'media',
             'lat' => 35.657872,
             'lng' => 139.70232,
+            'radius' => 100,
             'callback_url' => 'http://localhost',
             'verify_token' => 'token',
         ], $request->getAttributes());
