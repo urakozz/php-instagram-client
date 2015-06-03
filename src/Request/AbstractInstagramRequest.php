@@ -12,6 +12,8 @@
 namespace Instagram\Request;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Promise\PromiseInterface;
+use GuzzleHttp\Psr7;
 use Instagram\Response\AbstractInstagramResponse;
 
 /**
@@ -118,24 +120,24 @@ abstract class AbstractInstagramRequest implements \ArrayAccess
      * Desc
      *
      * @param ClientInterface $client
-     * @return \GuzzleHttp\Message\RequestInterface
+     * @return PromiseInterface
      */
-    public function getRequest(ClientInterface $client)
+    public function getRequestPromise(ClientInterface $client)
     {
         $attributes = $this->collectAttributes();
         $this->checkAttributes($attributes);
 
         $options       = [];
-        $key           = "POST" === $this->getMethod() ? "body" : "query";
+        $key           = "POST" === $this->getMethod() ? "form_params" : "query";
         $options[$key] = $attributes;
 
-        return $client->createRequest($this->getMethod(), $this->getAbsoluteUrl(), $options);
+        return $client->requestAsync($this->getMethod(), $this->getAbsoluteUrl(), $options);
     }
 
     /**
      * Desc
      *
-     * @return string
+     * @return Psr7\Uri
      */
     protected function getAbsoluteUrl()
     {
@@ -143,7 +145,8 @@ abstract class AbstractInstagramRequest implements \ArrayAccess
         $url = preg_replace_callback('/{([\w\_]+)}/u', function ($matches) {
             return $this->attributes[$matches[1]];
         }, $url);
-        return $this->endPoint . $url;
+
+        return new Psr7\Uri($this->endPoint . $url);
     }
 
     protected function collectAttributes()

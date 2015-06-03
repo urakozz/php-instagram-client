@@ -19,19 +19,12 @@ use Instagram\Request\Users\SelfFeedRequest;
 use Instagram\Response\Partials\Meta;
 use Instagram\Response\Partials\Pagination;
 use Instagram\Response\Users\SelfFeedResponse;
+use Instagram\Tests\Client\GuzzleHandlerTrait;
 
 class SelfFeedTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @var \Mockery\MockInterface | \GuzzleHttp\Client
-     */
-    protected $client;
+    use GuzzleHandlerTrait;
 
-    public function setUp()
-    {
-        $this->client = \Mockery::mock('GuzzleHttp\Client[send]');
-
-    }
 
     public function testSelfFeedRequest()
     {
@@ -49,12 +42,10 @@ class SelfFeedTest extends \PHPUnit_Framework_TestCase
 
     public function testMediaResponse()
     {
-        $stream = new \GuzzleHttp\Stream\BufferStream();
-        $stream->write(file_get_contents(__DIR__ . "/../fixtures/usersSelfFeed.json"));
-        $this->client->shouldReceive('send')->andReturn(new \GuzzleHttp\Message\Response(200, [], $stream));
+        $this->createHandlerForResponse(200, file_get_contents(__DIR__ . "/../fixtures/usersSelfFeed.json"));
 
         $token  = "228952246.d2cbeff.256ed5da07084b1cb49d089d0e210a82";
-        $client = new InstagramClient(new TokenConfig($token), $this->client);
+        $client = new InstagramClient(new TokenConfig($token), $this->getClient());
         /** @var SelfFeedResponse $response */
         $response = $client->call(new SelfFeedRequest());
 

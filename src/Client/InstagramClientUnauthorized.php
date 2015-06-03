@@ -22,17 +22,14 @@ use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Serializer\InstagramSerializerInterface;
 use Instagram\Serializer\JMSSerializer;
 
-class InstagramClientUnauthorized  implements InstagramClientInterface{
+class InstagramClientUnauthorized implements InstagramClientInterface
+{
+    use InstagramCallTrait;
 
     /**
      * @var AuthConfig
      */
     protected $config;
-
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
 
     /**
      * @var InstagramSerializerInterface
@@ -46,8 +43,8 @@ class InstagramClientUnauthorized  implements InstagramClientInterface{
     public function __construct(AuthConfig $config, ClientInterface $client = null)
     {
         $this->config     = $config;
-        $this->client     = $client ?: new Client();
         $this->serializer = new JMSSerializer();
+        $this->setClient($client ?: new Client());
     }
 
     /**
@@ -60,16 +57,9 @@ class InstagramClientUnauthorized  implements InstagramClientInterface{
     {
         $request->setClientId($this->config->getKey());
         $request->setClientSecret($this->config->getSecret());
-        $guzzleRequest = $request->getRequest($this->client);
-        try {
-            $response = $this->client->send($guzzleRequest);
-        } catch (RequestException $e) {
-            if ($e->getCode() === 400) {
-                $response = $e->getResponse();
-            } else {
-                throw $e;
-            }
-        }
+
+        $response = $this->doCall($request);
+
         $json = $response->getBody()->getContents();
         $res  = $this->serializer->deserialize($json, $request->getResponsePrototype());
         return $res;

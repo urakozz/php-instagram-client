@@ -14,19 +14,17 @@ namespace Instagram\Tests\Client\Subscription;
 
 
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Message\RequestInterface;
 use Instagram\Client\Config\AuthConfig;
 use Instagram\Client\InstagramClientUnauthorized;
 use Instagram\Request\Subscription\CreateSubscriptionRequest;
 use Instagram\Response\Partials\Subscription;
 use Instagram\Response\Subscription\CreateSubscriptionResponse;
+use Instagram\Tests\Client\GuzzleHandlerTrait;
 
 class CreateSubscriptionTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @var \Mockery\MockInterface | \GuzzleHttp\Client
-     */
-    protected $client;
+    use GuzzleHandlerTrait;
+
     protected $config;
 
     protected $jsonSuccess = '{"meta":{"code":200},"data":{"object":"user","object_id":null,"aspect":"media","callback_url":"http:\/\/staging.i.urakozz.me\/callback\/users","type":"subscription","id":"18423900"}}';
@@ -34,7 +32,6 @@ class CreateSubscriptionTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->client = \Mockery::mock('GuzzleHttp\Client[send]');
         $this->config = new AuthConfig("d2cbeff4792242f7b49ea65f984a1237", "f95c2c4cd80348258685d04b68ce0b64", "http://192.168.50.50/auth");
 
 
@@ -90,11 +87,9 @@ class CreateSubscriptionTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateSubscriptionSuccess()
     {
-        $stream = new \GuzzleHttp\Stream\BufferStream();
-        $stream->write($this->jsonSuccess);
-        $this->client->shouldReceive('send')->andReturn(new \GuzzleHttp\Message\Response(200, [], $stream));
+        $this->createHandlerForResponse(200, $this->jsonSuccess);
 
-        $client = new InstagramClientUnauthorized($this->config, $this->client);
+        $client = new InstagramClientUnauthorized($this->config, $this->getClient());
         /** @var CreateSubscriptionResponse $response */
         $response = $client->call(new CreateSubscriptionRequest([
             'object' => 'user',
@@ -114,15 +109,9 @@ class CreateSubscriptionTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateSubscriptionError()
     {
-        $stream = new \GuzzleHttp\Stream\BufferStream();
-        $stream->write($this->jsonError);
-        $this->client->shouldReceive('send')->andReturnUsing(function (RequestInterface $request) use ($stream) {
-            $response = new \GuzzleHttp\Message\Response(400);
-            $response->setBody($stream);
-            throw new RequestException($request, $request, $response);
-        });
+        $this->createHandlerForResponse(400, $this->jsonError);
 
-        $client = new InstagramClientUnauthorized($this->config, $this->client);
+        $client = new InstagramClientUnauthorized($this->config, $this->getClient());
         /** @var CreateSubscriptionResponse $response */
         $response = $client->call(new CreateSubscriptionRequest([
             'object' => 'user',

@@ -17,20 +17,18 @@ use Instagram\Client\Config\AuthConfig;
 use Instagram\Client\InstagramClientUnauthorized;
 use Instagram\Request\Subscription\DeleteSubscriptionRequest;
 use Instagram\Response\Subscription\DeleteSubscriptionResponse;
+use Instagram\Tests\Client\GuzzleHandlerTrait;
 
 class DeleteSubscriptionTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @var \Mockery\MockInterface | \GuzzleHttp\Client
-     */
-    protected $client;
+    use GuzzleHandlerTrait;
+
     protected $config;
 
     protected $jsonSuccess = '{"meta":{"code":200},"data":null}';
 
     public function setUp()
     {
-        $this->client = \Mockery::mock('GuzzleHttp\Client[send]');
         $this->config = new AuthConfig("d2cbeff4792242f7b49ea65f984a1237", "f95c2c4cd80348258685d04b68ce0b64", "http://192.168.50.50/auth");
     }
 
@@ -50,11 +48,9 @@ class DeleteSubscriptionTest extends \PHPUnit_Framework_TestCase
 
     public function testDeleteSubscriptionError()
     {
-        $stream = new \GuzzleHttp\Stream\BufferStream();
-        $stream->write($this->jsonSuccess);
-        $this->client->shouldReceive('send')->andReturn(new \GuzzleHttp\Message\Response(200, [], $stream));
+        $this->createHandlerForResponse(200, $this->jsonSuccess);
 
-        $client = new InstagramClientUnauthorized($this->config, $this->client);
+        $client = new InstagramClientUnauthorized($this->config, $this->getClient());
         /** @var DeleteSubscriptionResponse $response */
         $response = $client->call(new DeleteSubscriptionRequest([
             'object' => 'all',

@@ -33,15 +33,12 @@ use Instagram\Serializer\JMSSerializer;
  */
 class InstagramClient implements InstagramClientInterface
 {
+    use InstagramCallTrait;
+
     /**
      * @var TokenConfig
      */
     protected $config;
-
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
 
     /**
      * @var InstagramSerializerInterface
@@ -55,8 +52,8 @@ class InstagramClient implements InstagramClientInterface
     public function __construct(TokenConfig $config, ClientInterface $client = null)
     {
         $this->config     = $config;
-        $this->client     = $client ?: new Client();
         $this->serializer = new JMSSerializer();
+        $this->setClient($client ?: new Client());
     }
 
     /**
@@ -68,17 +65,8 @@ class InstagramClient implements InstagramClientInterface
     public function call(AbstractInstagramRequest $request)
     {
         $request->setToken($this->config->getToken());
-        $guzzleRequest = $request->getRequest($this->client);
-        try {
-            $response = $this->client->send($guzzleRequest);
-        } catch (RequestException $e) {
-            if ($e->getCode() === 400) {
-                $response = $e->getResponse();
-            } else {
-                throw $e;
-            }
-        }
-        $json = $response->getBody()->getContents();
+        $response = $this->doCall($request);
+        $json     = $response->getBody()->getContents();
 //        echo json_encode(json_decode($json),JSON_PRETTY_PRINT);
 //        file_put_contents("tests/Client/fixtures/users.user.json", json_encode(json_decode($json),JSON_PRETTY_PRINT));
         $res = $this->serializer->deserialize($json, $request->getResponsePrototype());

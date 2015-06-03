@@ -13,18 +13,17 @@
 namespace Instagram\Tests\Client;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Message\RequestInterface;
+
 use Instagram\Client\Config\TokenConfig;
 use Instagram\Client\InstagramClient;
 use Instagram\Request\Users\SelfFeedRequest;
 use Instagram\Response\Users\SelfFeedResponse;
 use Instagram\Response\Partials\Meta;
-use Instagram\Response\Partials\Pagination;
 
 class InstagramClientTest extends \PHPUnit_Framework_TestCase
 {
+    use GuzzleHandlerTrait;
+
     /**
      * @var \Mockery\MockInterface | \GuzzleHttp\Client
      */
@@ -35,22 +34,22 @@ class InstagramClientTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->client = \Mockery::mock('GuzzleHttp\Client[send]');
         $this->config = new TokenConfig("d2cbeff4792242f7b49ea65f984a1237");
 
     }
 
     public function testMediaResponseError()
     {
-        $stream = new \GuzzleHttp\Stream\BufferStream();
-        $stream->write($this->jsonError);
-        $this->client->shouldReceive('send')->andReturnUsing(function(RequestInterface $request)use($stream){
-            $response = new \GuzzleHttp\Message\Response(400);
-            $response->setBody($stream);
-            throw new RequestException($request, $request, $response);
-        });
+        $this->createHandlerForResponse(400, $this->jsonError);
+//        $stream = new \GuzzleHttp\Stream\BufferStream();
+//        $stream->write($this->jsonError);
+//        $this->client->shouldReceive('send')->andReturnUsing(function(RequestInterface $request)use($stream){
+//            $response = new \GuzzleHttp\Message\Response(400);
+//            $response->setBody($stream);
+//            throw new RequestException($request, $request, $response);
+//        });
 
-        $client = new InstagramClient($this->config, $this->client);
+        $client = new InstagramClient($this->config, $this->getClient());
         /** @var SelfFeedResponse $response */
         $response = $client->call(new SelfFeedRequest());
 
