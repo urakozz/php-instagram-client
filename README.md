@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/urakozz/php-instagram-client.svg?branch=master)](https://travis-ci.org/urakozz/php-instagram-client)
 [![Code Climate](https://codeclimate.com/github/urakozz/php-instagram-client/badges/gpa.svg)](https://codeclimate.com/github/urakozz/php-instagram-client)
 [![Test Coverage](https://codeclimate.com/github/urakozz/php-instagram-client/badges/coverage.svg)](https://codeclimate.com/github/urakozz/php-instagram-client/coverage)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/a53535f9-143c-49ae-a643-52055639db1f/mini.png)](https://insight.sensiolabs.com/projects/a53535f9-143c-49ae-a643-52055639db1f)
 
 ## Install and run tests
 
