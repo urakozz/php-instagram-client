@@ -21,6 +21,7 @@ use Instagram\Client\InstagramClientUnauthorized;
 use Instagram\Request\Comments\GetCommentsRequest;
 use Instagram\Request\Likes\GetLikesRequest;
 use Instagram\Request\Media\GetMediaRequest;
+use Instagram\Request\Media\GetMediaShortcodeRequest;
 use Instagram\Request\Subscription\GetSubscriptionsRequest;
 use Instagram\Response\Comments\GetCommentsResponse;
 use Instagram\Response\Likes\GetLikesResponse;
@@ -46,6 +47,13 @@ class GetMediaTest extends \PHPUnit_Framework_TestCase
         $this->assertSame([
             'media_id' => '999999537539417466_29586504',
         ], $request->getAttributes());
+
+        $request = new GetMediaShortcodeRequest();
+        $request->setShortcode('D');
+
+        $this->assertSame([
+            'shortcode' => 'D',
+        ], $request->getAttributes());
     }
 
     public function testMediaResponse()
@@ -56,6 +64,27 @@ class GetMediaTest extends \PHPUnit_Framework_TestCase
         $client = new InstagramClient(new TokenConfig($token), $this->getClient());
         /** @var GetMediaResponse $response */
         $response = $client->call(new GetMediaRequest(['media_id' => '996571898003529362_228952246']));
+
+        $this->assertInstanceOf(GetMediaResponse::class, $response);
+        $this->assertTrue($response->isOk());
+        $this->assertEquals(200, $response->getCode());
+        $this->assertNull($response->getErrorType());
+        $this->assertNull($response->getErrorMessage());
+        $this->assertInstanceOf(Meta::class, $response->getMeta());
+        $this->assertInstanceOf(Media::class, $response->getData());
+
+        $this->assertEquals("Normal", $response->getData()->getFilter());
+
+    }
+
+    public function testMediaShortcodeResponse()
+    {
+        $this->createHandlerForResponse(200, file_get_contents(__DIR__ . "/../fixtures/media.get.json"));
+
+        $token  = "228952246.d2cbeff.cfedd3e061a4418283bea7b4b05210f9";
+        $client = new InstagramClient(new TokenConfig($token), $this->getClient());
+        /** @var GetMediaResponse $response */
+        $response = $client->call(new GetMediaShortcodeRequest(['shortcode' => 'D']));
 
         $this->assertInstanceOf(GetMediaResponse::class, $response);
         $this->assertTrue($response->isOk());
