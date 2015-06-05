@@ -15,7 +15,6 @@ namespace Instagram\Request\Comments;
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Comments\GetCommentsResponse;
-use Instagram\Response\Users\SelfMediaLikedResponse;
 
 class GetCommentsRequest extends AbstractInstagramRequest
 {

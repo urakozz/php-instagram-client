@@ -16,8 +16,6 @@ namespace Instagram\Request\Likes;
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Likes\DeleteLikeResponse;
-use Instagram\Response\Likes\GetLikesResponse;
-use Instagram\Response\Likes\PostLikeResponse;
 
 class DeleteLikeRequest extends AbstractInstagramRequest
 {

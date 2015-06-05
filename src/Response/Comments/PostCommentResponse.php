@@ -13,10 +13,8 @@
 namespace Instagram\Response\Comments;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\AbstractMediaResponse;
 use Instagram\Response\Traits\EmptyResponseTrait;
-use JMS\Serializer\Annotation\Type;
 
 class PostCommentResponse extends AbstractMediaResponse
 {

@@ -13,9 +13,7 @@
 namespace Instagram\Response\Comments;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\AbstractMediaResponse;
-use JMS\Serializer\Annotation\Type;
 
 class DeleteCommentResponse extends AbstractMediaResponse
 {

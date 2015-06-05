@@ -15,9 +15,6 @@ namespace Instagram\Request\Comments;
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Comments\DeleteCommentResponse;
-use Instagram\Response\Comments\GetCommentsResponse;
-use Instagram\Response\Comments\PostCommentResponse;
-use Instagram\Response\Users\SelfMediaLikedResponse;
 
 class DeleteCommentRequest extends AbstractInstagramRequest
 {
