@@ -3,34 +3,36 @@
  * PHP Version 5
  *
  * @category  H24
- * @package
+ * @package   H24
  * @author    "Yury Kozyrev" <yury.kozyrev@home24.de>
  * @copyright 2015 Home24 GmbH
  * @license   Proprietary license.
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Response\Partials\Sequence;
+namespace Instagram\Response\Comments;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Instagram\Response\AbstractMediaResponse;
 use JMS\Serializer\Annotation\Type;
 
-/**
- * PHP Version 5
- *
- * Class Comments
- *
- * @package Instagram\Response\Partials\Sequence
- * @method \Instagram\Response\Partials\Caption[]|ArrayCollection getData()
- */
-class Comments extends AbstractSequence
+class GetCommentsResponse extends AbstractMediaResponse
 {
 
     /**
-     * @var ArrayCollection | \Instagram\Response\Partials\Caption[]
+     * @var \Instagram\Response\Partials\Caption[]
      * @Type("ArrayCollection<Instagram\Response\Partials\Caption>")
      */
     protected $data;
 
+    /**
+     * Desc
+     *
+     * @return ArrayCollection | \Instagram\Response\Partials\Caption[]
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
 }
