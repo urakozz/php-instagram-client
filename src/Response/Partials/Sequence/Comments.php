@@ -14,7 +14,6 @@ namespace Instagram\Response\Partials\Sequence;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Instagram\Response\Partials\Caption;
 use JMS\Serializer\Annotation\Type;
 
 /**
@@ -29,7 +28,7 @@ class Comments extends AbstractSequence
 {
 
     /**
-     * @var ArrayCollection | Caption[]
+     * @var ArrayCollection | \Instagram\Response\Partials\Caption[]
      * @Type("ArrayCollection<Instagram\Response\Partials\Caption>")
      */
     protected $data;

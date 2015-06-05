@@ -28,7 +28,7 @@ trait InstagramCallTrait
     /**
      * @param ClientInterface $client
      */
-    protected function setClient($client)
+    protected function setClient(ClientInterface $client)
     {
         $this->client = $client;
     }

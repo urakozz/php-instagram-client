@@ -14,13 +14,12 @@ namespace Instagram\Response\Partials\Sequence;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Instagram\Response\Partials\UserInfo;
 use JMS\Serializer\Annotation\Type;
 
 class Likes extends AbstractSequence{
 
     /**
-     * @var ArrayCollection | UserInfo[]
+     * @var ArrayCollection | \Instagram\Response\Partials\UserInfo[]
      * @Type("ArrayCollection<Instagram\Response\Partials\UserInfo>")
      */
     protected $data;
