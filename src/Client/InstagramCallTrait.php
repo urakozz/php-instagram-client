@@ -15,7 +15,6 @@ namespace Instagram\Client;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
-use GuzzleHttp\Exception\RequestException;
 use Instagram\Request\AbstractInstagramRequest;
 
 trait InstagramCallTrait

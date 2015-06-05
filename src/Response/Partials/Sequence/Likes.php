@@ -13,8 +13,8 @@
 namespace Instagram\Response\Partials\Sequence;
 
 
-use Instagram\Response\Partials\UserInfo;
 use Doctrine\Common\Collections\ArrayCollection;
+use Instagram\Response\Partials\UserInfo;
 use JMS\Serializer\Annotation\Type;
 
 class Likes extends AbstractSequence{

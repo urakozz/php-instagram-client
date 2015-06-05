@@ -11,9 +11,9 @@
 
 namespace Instagram\Response;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\Partials\Meta;
 use Instagram\Response\Partials\Pagination;
-use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation\Type;
 
 /**

@@ -15,7 +15,6 @@ namespace Instagram\Request\Users;
 
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Users\UserResponse;
 use Instagram\Response\Users\UserSearchResponse;
 
 class UserSearchRequest extends AbstractInstagramRequest

@@ -13,7 +13,6 @@
 namespace Instagram\Response\Subscription;
 
 
-use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\AbstractMediaResponse;
 use Instagram\Response\Partials\Subscription;
 use JMS\Serializer\Annotation\Type;

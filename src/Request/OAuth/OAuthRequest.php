@@ -13,7 +13,6 @@ namespace Instagram\Request\OAuth;
 
 
 use Instagram\Request\AbstractInstagramRequest;
-use Instagram\Response\AbstractMediaResponse;
 use Instagram\Response\InstagramResponse;
 use Instagram\Response\OAuth\OAuthResponse;
 

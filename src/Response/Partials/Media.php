@@ -13,10 +13,10 @@
 namespace Instagram\Response\Partials;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\Partials\Image\Images;
 use Instagram\Response\Partials\Sequence\Comments;
 use Instagram\Response\Partials\Sequence\Likes;
-use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation\Type;
 
 class Media

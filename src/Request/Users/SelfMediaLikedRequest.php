@@ -14,7 +14,6 @@ namespace Instagram\Request\Users;
 
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Users\SelfFeedResponse;
 use Instagram\Response\Users\SelfMediaLikedResponse;
 
 class SelfMediaLikedRequest extends AbstractInstagramRequest

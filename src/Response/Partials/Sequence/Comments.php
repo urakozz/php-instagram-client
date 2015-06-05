@@ -13,8 +13,8 @@
 namespace Instagram\Response\Partials\Sequence;
 
 
-use Instagram\Response\Partials\Caption;
 use Doctrine\Common\Collections\ArrayCollection;
+use Instagram\Response\Partials\Caption;
 use JMS\Serializer\Annotation\Type;
 
 /**

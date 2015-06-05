@@ -11,14 +11,9 @@
 
 namespace Instagram\Client;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;
-use Instagram\Client\Config\AuthConfig;
 use Instagram\Request\OAuth\OAuthRequest;
 use Instagram\Response\OAuth\OAuthResponse;
-use Instagram\Serializer\InstagramSerializerInterface;
-use Instagram\Serializer\JMSSerializer;
 
 
 /**
