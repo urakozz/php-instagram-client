@@ -21,12 +21,6 @@ class DeleteCommentResponse extends AbstractMediaResponse
 {
 
     /**
-     * @var boolean
-     * @Type("boolean")
-     */
-    protected $data;
-
-    /**
      * Desc
      *
      * @return boolean

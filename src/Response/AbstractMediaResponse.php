@@ -31,7 +31,8 @@ abstract class AbstractMediaResponse extends AbstractInstagramResponse
 {
 
     /**
-     * @var ArrayCollection
+     * @var boolean
+     * @Type("boolean")
      */
     protected $data;
 

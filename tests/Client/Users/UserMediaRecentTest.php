@@ -43,7 +43,7 @@ class UserMediaRecentTest extends \PHPUnit_Framework_TestCase
         $this->createHandlerForResponse(200, file_get_contents(__DIR__ . "/../fixtures/users.userMediaRecent.json"));
 
         $token  = "228952246.d2cbeff.cfedd3e061a4418283bea7b4b05210f9";
-        $client = new InstagramClient(new TokenConfig($token));
+        $client = new InstagramClient(new TokenConfig($token), $this->getClient());
         /** @var SelfFeedResponse $response */
         $response = $client->call(new UserMediaRecentRequest(['user_id'=>'228952246']));
 

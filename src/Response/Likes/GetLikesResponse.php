@@ -10,21 +10,25 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Response\Comments;
+namespace Instagram\Response\Likes;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\AbstractMediaResponse;
-use Instagram\Response\Traits\EmptyResponseTrait;
 use JMS\Serializer\Annotation\Type;
 
-class PostCommentResponse extends AbstractMediaResponse
+class GetLikesResponse extends AbstractMediaResponse
 {
+    /**
+     * @var \Instagram\Response\Partials\Caption[]
+     * @Type("ArrayCollection<Instagram\Response\Partials\UserInfo>")
+     */
+    protected $data;
 
     /**
      * Desc
      *
-     * @return boolean
+     * @return ArrayCollection | \Instagram\Response\Partials\UserInfo[]
      */
     public function getData()
     {
