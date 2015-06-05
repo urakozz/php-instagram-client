@@ -17,10 +17,18 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\Partials\Image\Images;
 use Instagram\Response\Partials\Sequence\Comments;
 use Instagram\Response\Partials\Sequence\Likes;
+use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
 
 class Media
 {
+
+    /**
+     * @var string
+     * @Type("string")
+     * @SerializedName("id")
+     */
+    protected $mediaId;
 
     /**
      * @var string
@@ -99,6 +107,22 @@ class Media
      * @Type("Instagram\Response\Partials\UserInfo")
      */
     protected $user;
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->mediaId;
+    }
+
+    /**
+     * @param string $mediaId
+     */
+    public function setId($mediaId)
+    {
+        $this->mediaId = $mediaId;
+    }
 
     /**
      * @return string

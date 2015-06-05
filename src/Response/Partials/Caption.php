@@ -13,6 +13,7 @@
 namespace Instagram\Response\Partials;
 
 
+use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
 
 class Caption
@@ -21,8 +22,9 @@ class Caption
     /**
      * @var string
      * @Type("string")
+     * @SerializedName("id")
      */
-    public $id;
+    public $captionId;
 
     /**
      * @var string
@@ -52,15 +54,15 @@ class Caption
      */
     public function getId()
     {
-        return $this->id;
+        return $this->captionId;
     }
 
     /**
-     * @param string $id
+     * @param string $captionId
      */
-    public function setId($id)
+    public function setId($captionId)
     {
-        $this->id = $id;
+        $this->captionId = $captionId;
     }
 
     /**

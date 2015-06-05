@@ -67,7 +67,7 @@ class InstagramClient implements InstagramClientInterface
         $response = $this->doCall($request);
         $json     = $response->getBody()->getContents();
 //        echo json_encode(json_decode($json),JSON_PRETTY_PRINT);
-//        file_put_contents("tests/Client/fixtures/comments.get.json", json_encode(json_decode($json),JSON_PRETTY_PRINT));
+        file_put_contents("tests/Client/fixtures/comments.post.json", json_encode(json_decode($json),JSON_PRETTY_PRINT));
         $res = $this->serializer->deserialize($json, $request->getResponsePrototype());
         return $res;
     }

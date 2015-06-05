@@ -61,7 +61,9 @@ class SelfMediaLikedTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("999362055517011319_1651301566", $response->getPagination()->getNextMaxId());
         $this->assertContains("999362055517011319_1651301566", $response->getPagination()->getNextUrl());
 
+
         $media = $response->getData()->first();
+        $this->assertEquals("999999537539417466_29586504", $media->getId());
         $this->assertEquals("999999538688656946", $media->getCaption()->getId());
     }
 }
