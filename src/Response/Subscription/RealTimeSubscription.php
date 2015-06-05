@@ -180,5 +180,4 @@ class RealTimeSubscription extends AbstractInstagramResponse
         $this->data = $data;
     }
 
-
 }

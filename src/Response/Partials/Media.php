@@ -308,5 +308,4 @@ class Media
         $this->user = $user;
     }
 
-
 }

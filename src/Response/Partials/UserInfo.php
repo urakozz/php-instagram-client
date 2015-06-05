@@ -163,5 +163,4 @@ class UserInfo {
         return $this->counts;
     }
 
-
 }

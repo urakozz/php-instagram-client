@@ -83,6 +83,4 @@ class ImageDetails
     {
         $this->height = $height;
     }
-
-
 }

@@ -138,7 +138,4 @@ class OAuthResponse extends AbstractInstagramResponse
         $this->accessToken = $accessToken;
     }
 
-
-
-
 }

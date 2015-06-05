@@ -45,5 +45,4 @@ abstract class AbstractInstagramResponse
         return !$this->getCode() || 200 === $this->getCode();
     }
 
-
 }
