@@ -10,14 +10,14 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Request\Likes;
+namespace Instagram\Request\Media;
 
 
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Likes\GetLikesResponse;
+use Instagram\Response\Media\GetMediaResponse;
 
-class GetLikesRequest extends AbstractInstagramRequest
+class GetMediaRequest extends AbstractInstagramRequest
 {
 
     public function setMediaId($mediaId)
@@ -42,7 +42,7 @@ class GetLikesRequest extends AbstractInstagramRequest
      */
     public function getUrl()
     {
-        return "/media/{media_id}/likes";
+        return "/media/{media_id}";
     }
 
     /**
@@ -52,7 +52,7 @@ class GetLikesRequest extends AbstractInstagramRequest
      */
     public function getRequiredAttributes()
     {
-        return ["media_id"];
+        return ['media_id'];
     }
 
     /**
@@ -62,6 +62,6 @@ class GetLikesRequest extends AbstractInstagramRequest
      */
     public function getResponsePrototype()
     {
-        return new GetLikesResponse();
+        return new GetMediaResponse();
     }
 }

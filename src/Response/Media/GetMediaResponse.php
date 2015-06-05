@@ -10,20 +10,25 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Response\Likes;
+namespace Instagram\Response\Media;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\AbstractMediaResponse;
 use JMS\Serializer\Annotation\Type;
 
-class DeleteLikeResponse extends AbstractMediaResponse
+class GetMediaResponse extends AbstractMediaResponse
 {
+
+    /**
+     * @var \Instagram\Response\Partials\Media
+     * @Type("Instagram\Response\Partials\Media")
+     */
+    protected $data;
 
     /**
      * Desc
      *
-     * @return null
+     * @return \Instagram\Response\Partials\Media
      */
     public function getData()
     {
