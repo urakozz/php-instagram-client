@@ -10,18 +10,23 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Response\Comments;
-
+namespace Instagram\Response\Tag;
 
 use Instagram\Response\AbstractMediaResponse;
+use Instagram\Response\Partials\Tag;
+use JMS\Serializer\Annotation\Type;
 
-class PostCommentResponse extends AbstractMediaResponse
+class TagResponse extends AbstractMediaResponse
 {
 
     /**
-     * Desc
-     *
-     * @return boolean
+     * @var Tag
+     * @Type("Instagram\Response\Partials\Tag")
+     */
+    protected $data;
+
+    /**
+     * @return \Instagram\Response\Partials\Tag
      */
     public function getData()
     {
