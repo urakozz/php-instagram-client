@@ -24,7 +24,7 @@ use Instagram\Response\Partials\Location;
 use Instagram\Response\Partials\Meta;
 use Instagram\Tests\Client\GuzzleHandlerTrait;
 
-class LocationsTest extends \PHPUnit_Framework_TestCase
+class LocationsSearchTest extends \PHPUnit_Framework_TestCase
 {
     use GuzzleHandlerTrait;
 
