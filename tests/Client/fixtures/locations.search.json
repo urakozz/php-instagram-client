@@ -1,0 +1,127 @@
+{
+    "meta": {
+        "code": 200
+    },
+    "data": [
+        {
+            "latitude": 52.516667,
+            "id": "750416454",
+            "longitude": 13.383333,
+            "name": "\u0411\u0435\u0440\u043b\u0438\u043d"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "787007653",
+            "longitude": 13.383333,
+            "name": "Jerman"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "748560096",
+            "longitude": 13.383333,
+            "name": "Berlim"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "742919502",
+            "longitude": 13.383333,
+            "name": "Tyskland"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "726505759",
+            "longitude": 13.383333,
+            "name": "Deutschland"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "735670240",
+            "longitude": 13.383333,
+            "name": "\u0413\u0435\u0440\u043c\u0430\u043d\u0438\u044f"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "743578595",
+            "longitude": 13.383333,
+            "name": "Berliin"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "746945823",
+            "longitude": 13.383333,
+            "name": "Berlino"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "737982534",
+            "longitude": 13.383333,
+            "name": "Almanya"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "780769016",
+            "longitude": 13.383333,
+            "name": "\u041d\u0456\u043c\u0435\u0447\u0447\u0438\u043d\u0430"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "773129856",
+            "longitude": 13.383333,
+            "name": "\u0628\u0631\u0644\u064a\u0646"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "789639480",
+            "longitude": 13.383333,
+            "name": "Berliini"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "731163764",
+            "longitude": 13.383333,
+            "name": "Berlijn"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "791225103",
+            "longitude": 13.383333,
+            "name": "Berlin"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "742217496",
+            "longitude": 13.383333,
+            "name": "Berl\u012bne"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "727523302",
+            "longitude": 13.383333,
+            "name": "\u0413\u0435\u0440\u043c\u0430\u043d\u0438\u044f"
+        },
+        {
+            "latitude": 52.516667,
+            "id": "727778445",
+            "longitude": 13.383333,
+            "name": "Duitsland"
+        },
+        {
+            "latitude": 52.516666667,
+            "id": "745449883",
+            "longitude": 13.383333333,
+            "name": "Berlin"
+        },
+        {
+            "latitude": 52.516666667,
+            "id": "251794455",
+            "longitude": 13.383333333,
+            "name": "Germany"
+        },
+        {
+            "latitude": 52.516742153,
+            "id": "258068040",
+            "longitude": 13.383305099,
+            "name": "Forum Willy Brandt Berlin"
+        }
+    ]
+}

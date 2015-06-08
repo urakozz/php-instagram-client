@@ -10,23 +10,25 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Request\Users;
+namespace Instagram\Request\Location;
 
 
 use Instagram\Request\AbstractInstagramRequest;
-use Instagram\Request\Traits\Count;
-use Instagram\Request\Traits\Timestamp;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Users\UserMediaRecentResponse;
+use Instagram\Response\Locations\LocationResponse;
 
-class UserMediaRecentRequest extends AbstractInstagramRequest
+class LocationRequest extends AbstractInstagramRequest
 {
-    use Timestamp;
-    use Count;
 
-    public function setUserId($userId)
+    /**
+     * Desc
+     *
+     * @param $locationId
+     * @return void
+     */
+    public function setLocationId($locationId)
     {
-        $this['user_id'] = $userId;
+        $this['location_id'] = $locationId;
     }
 
     /**
@@ -36,7 +38,7 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getMethod()
     {
-        return 'GET';
+        return "GET";
     }
 
     /**
@@ -46,7 +48,7 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getUrl()
     {
-        return '/users/{user_id}/media/recent';
+        return "/locations/{location_id}";
     }
 
     /**
@@ -56,7 +58,7 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getRequiredAttributes()
     {
-        return ['user_id'];
+        return ['location_id'];
     }
 
     /**
@@ -66,6 +68,6 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getResponsePrototype()
     {
-        return new UserMediaRecentResponse();
+        return new LocationResponse();
     }
 }

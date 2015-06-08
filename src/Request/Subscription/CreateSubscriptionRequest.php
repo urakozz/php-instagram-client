@@ -14,11 +14,13 @@ namespace Instagram\Request\Subscription;
 
 
 use Instagram\Request\AbstractInstagramRequest;
+use Instagram\Request\Traits\LatLng;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Subscription\CreateSubscriptionResponse;
 
 class CreateSubscriptionRequest extends AbstractInstagramRequest
 {
+    use LatLng;
 
     public function setCallbackUrl($callbackUrl)
     {
@@ -38,16 +40,6 @@ class CreateSubscriptionRequest extends AbstractInstagramRequest
     public function setAspect($media)
     {
         $this['aspect'] = $media;
-    }
-
-    public function setLat($lat)
-    {
-        $this['lat'] = $lat;
-    }
-
-    public function setLng($lng)
-    {
-        $this['lng'] = $lng;
     }
 
     public function setRadius($radius)

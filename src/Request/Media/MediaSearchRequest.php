@@ -14,36 +14,18 @@ namespace Instagram\Request\Media;
 
 
 use Instagram\Request\AbstractInstagramRequest;
+use Instagram\Request\Traits\Distance;
+use Instagram\Request\Traits\LatLng;
+use Instagram\Request\Traits\Timestamp;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Media\ListMediaResponse;
 
 class MediaSearchRequest extends AbstractInstagramRequest
 {
 
-    public function setDistance($distance)
-    {
-        $this['distance'] = $distance;
-    }
-
-    public function setLat($lat)
-    {
-        $this['lat'] = $lat;
-    }
-
-    public function setLng($lng)
-    {
-        $this['lng'] = $lng;
-    }
-
-    public function setMaxTimestamp($max)
-    {
-        $this['max_timestamp'] = $max;
-    }
-
-    public function setMinTimestamp($min)
-    {
-        $this['min_timestamp'] = $min;
-    }
+    use Timestamp;
+    use LatLng;
+    use Distance;
 
     /**
      * Get Request Method (GET|POST|DELETE)
