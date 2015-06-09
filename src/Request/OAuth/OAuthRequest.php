@@ -13,6 +13,7 @@ namespace Instagram\Request\OAuth;
 
 
 use Instagram\Request\AbstractInstagramRequest;
+use Instagram\Request\Traits\MethodPost;
 use Instagram\Response\OAuth\OAuthResponse;
 
 /**
@@ -28,22 +29,14 @@ use Instagram\Response\OAuth\OAuthResponse;
  */
 class OAuthRequest extends AbstractInstagramRequest
 {
+    use MethodPost;
+
     /**
      * Endpoint
      *
      * @var string
      */
     protected $endPoint = "https://api.instagram.com/oauth";
-
-    /**
-     * Get Request Method (GET|POST|DELETE)
-     *
-     * @return string
-     */
-    public function getMethod()
-    {
-        return "POST";
-    }
 
     /**
      * Get Request URL

@@ -13,11 +13,13 @@ namespace Instagram\Request\Comments;
 
 
 use Instagram\Request\AbstractInstagramRequest;
+use Instagram\Request\Traits\MethodPost;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Comments\PostCommentResponse;
 
 class PostCommentRequest extends AbstractInstagramRequest
 {
+    use MethodPost;
 
     public function setMediaId($mediaId)
     {
@@ -27,16 +29,6 @@ class PostCommentRequest extends AbstractInstagramRequest
     public function setText($text)
     {
         $this['text'] = $text;
-    }
-
-    /**
-     * Get Request Method (GET|POST|DELETE)
-     *
-     * @return string
-     */
-    public function getMethod()
-    {
-        return "POST";
     }
 
     /**

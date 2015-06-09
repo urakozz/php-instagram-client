@@ -15,11 +15,13 @@ namespace Instagram\Request\Subscription;
 
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Request\Traits\LatLng;
+use Instagram\Request\Traits\MethodPost;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Subscription\CreateSubscriptionResponse;
 
 class CreateSubscriptionRequest extends AbstractInstagramRequest
 {
+    use MethodPost;
     use LatLng;
 
     public function setCallbackUrl($callbackUrl)
