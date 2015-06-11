@@ -13,11 +13,14 @@ namespace Instagram\Request\Comments;
 
 
 use Instagram\Request\AbstractInstagramRequest;
+use Instagram\Request\Traits\MethodDelete;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Comments\DeleteCommentResponse;
 
 class DeleteCommentRequest extends AbstractInstagramRequest
 {
+
+    use MethodDelete;
 
     public function setMediaId($mediaId)
     {
@@ -27,16 +30,6 @@ class DeleteCommentRequest extends AbstractInstagramRequest
     public function setCommentId($commentId)
     {
         $this['comment_id'] = $commentId;
-    }
-
-    /**
-     * Get Request Method (GET|POST|DELETE)
-     *
-     * @return string
-     */
-    public function getMethod()
-    {
-        return "DELETE";
     }
 
     /**

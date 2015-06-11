@@ -10,21 +10,18 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Response\Comments;
+namespace Instagram\Request\Traits;
 
 
-use Instagram\Response\AbstractMediaResponse;
-
-class PostCommentResponse extends AbstractMediaResponse
+trait MethodPost
 {
-
     /**
-     * Desc
+     * Get Request Method (POST)
      *
-     * @return boolean
+     * @return string
      */
-    public function getData()
+    public function getMethod()
     {
-        return $this->data;
+        return "POST";
     }
 }

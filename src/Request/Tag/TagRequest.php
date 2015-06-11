@@ -10,22 +10,29 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Request\Likes;
+namespace Instagram\Request\Tag;
 
 
 use Instagram\Request\AbstractInstagramRequest;
-use Instagram\Request\Traits\MethodPost;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Likes\PostLikeResponse;
+use Instagram\Response\Tag\TagResponse;
 
-class PostLikeRequest extends AbstractInstagramRequest
+class TagRequest extends AbstractInstagramRequest
 {
 
-    use MethodPost;
-
-    public function setMediaId($mediaId)
+    public function setTagName($tag)
     {
-        $this['media_id'] = $mediaId;
+        $this['tag_name'] = $tag;
+    }
+
+    /**
+     * Get Request Method (GET|POST|DELETE)
+     *
+     * @return string
+     */
+    public function getMethod()
+    {
+        return "GET";
     }
 
     /**
@@ -35,7 +42,7 @@ class PostLikeRequest extends AbstractInstagramRequest
      */
     public function getUrl()
     {
-        return "/media/{media_id}/likes";
+        return "/tags/{tag_name}";
     }
 
     /**
@@ -45,7 +52,7 @@ class PostLikeRequest extends AbstractInstagramRequest
      */
     public function getRequiredAttributes()
     {
-        return ["media_id"];
+        return ['tag_name'];
     }
 
     /**
@@ -55,6 +62,6 @@ class PostLikeRequest extends AbstractInstagramRequest
      */
     public function getResponsePrototype()
     {
-        return new PostLikeResponse();
+        return new TagResponse();
     }
 }

@@ -10,23 +10,34 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Request\Users;
+namespace Instagram\Request\Tag;
 
 
 use Instagram\Request\AbstractInstagramRequest;
-use Instagram\Request\Traits\Count;
-use Instagram\Request\Traits\Timestamp;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Users\UserMediaRecentResponse;
+use Instagram\Response\Tag\TagMediaRecentResponse;
 
-class UserMediaRecentRequest extends AbstractInstagramRequest
+class TagMediaRecentRequest extends AbstractInstagramRequest
 {
-    use Timestamp;
-    use Count;
 
-    public function setUserId($userId)
+    public function setCount($count)
     {
-        $this['user_id'] = $userId;
+        $this['count'] = $count;
+    }
+
+    public function setMinTagId($minId)
+    {
+        $this['min_tag_id'] = $minId;
+    }
+
+    public function setMaxTagId($maxId)
+    {
+        $this['max_tag_id'] = $maxId;
+    }
+
+    public function setTagName($tag)
+    {
+        $this['tag_name'] = $tag;
     }
 
     /**
@@ -36,7 +47,7 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getMethod()
     {
-        return 'GET';
+        return "GET";
     }
 
     /**
@@ -46,7 +57,7 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getUrl()
     {
-        return '/users/{user_id}/media/recent';
+        return "/tags/{tag_name}/media/recent";
     }
 
     /**
@@ -56,7 +67,7 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getRequiredAttributes()
     {
-        return ['user_id'];
+        return ['tag_name'];
     }
 
     /**
@@ -66,6 +77,6 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getResponsePrototype()
     {
-        return new UserMediaRecentResponse();
+        return new TagMediaRecentResponse();
     }
 }

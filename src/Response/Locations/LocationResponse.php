@@ -10,21 +10,28 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Response\Comments;
+namespace Instagram\Response\Locations;
 
 
 use Instagram\Response\AbstractMediaResponse;
+use JMS\Serializer\Annotation\Type;
 
-class PostCommentResponse extends AbstractMediaResponse
+class LocationResponse extends AbstractMediaResponse
 {
+    /**
+     * @var \Instagram\Response\Partials\Location
+     * @Type("Instagram\Response\Partials\Location")
+     */
+    protected $data;
 
     /**
      * Desc
      *
-     * @return boolean
+     * @return \Instagram\Response\Partials\Location
      */
     public function getData()
     {
         return $this->data;
     }
+
 }

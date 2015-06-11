@@ -46,6 +46,12 @@ class PostDeleteLikesTest extends \PHPUnit_Framework_TestCase
         $this->assertSame([
             'media_id' => '999999537539417466_29586504',
         ], $request->getAttributes());
+        $request = new DeleteLikeRequest();
+        $request->setMediaId('999999537539417466_29586504');
+
+        $this->assertSame([
+            'media_id' => '999999537539417466_29586504',
+        ], $request->getAttributes());
     }
 
     public function testPostLike()

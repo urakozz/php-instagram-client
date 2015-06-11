@@ -14,25 +14,17 @@ namespace Instagram\Request\Likes;
 
 
 use Instagram\Request\AbstractInstagramRequest;
+use Instagram\Request\Traits\MethodDelete;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Likes\DeleteLikeResponse;
 
 class DeleteLikeRequest extends AbstractInstagramRequest
 {
+    use MethodDelete;
 
     public function setMediaId($mediaId)
     {
         $this['media_id'] = $mediaId;
-    }
-
-    /**
-     * Get Request Method (GET|POST|DELETE)
-     *
-     * @return string
-     */
-    public function getMethod()
-    {
-        return "DELETE";
     }
 
     /**

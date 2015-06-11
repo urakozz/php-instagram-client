@@ -10,22 +10,30 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Request\Likes;
+namespace Instagram\Request\Geographies;
 
 
 use Instagram\Request\AbstractInstagramRequest;
-use Instagram\Request\Traits\MethodPost;
+use Instagram\Request\Traits\Count;
+use Instagram\Request\Traits\MethodGet;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Likes\PostLikeResponse;
+use Instagram\Response\Geographies\GeographyMediaRecentResponse;
 
-class PostLikeRequest extends AbstractInstagramRequest
+class GeographyMediaRecentRequest extends AbstractInstagramRequest
 {
 
-    use MethodPost;
+    use MethodGet;
 
-    public function setMediaId($mediaId)
+    use Count;
+
+    public function setGeoId($id)
     {
-        $this['media_id'] = $mediaId;
+        $this['geo_id'] = $id;
+    }
+
+    public function setMinId($id)
+    {
+        $this['min_id'] = $id;
     }
 
     /**
@@ -35,7 +43,7 @@ class PostLikeRequest extends AbstractInstagramRequest
      */
     public function getUrl()
     {
-        return "/media/{media_id}/likes";
+        return "/geographies/{geo_id}/media/recent";
     }
 
     /**
@@ -45,7 +53,7 @@ class PostLikeRequest extends AbstractInstagramRequest
      */
     public function getRequiredAttributes()
     {
-        return ["media_id"];
+        return ['geo_id'];
     }
 
     /**
@@ -55,6 +63,6 @@ class PostLikeRequest extends AbstractInstagramRequest
      */
     public function getResponsePrototype()
     {
-        return new PostLikeResponse();
+        return new GeographyMediaRecentResponse();
     }
 }

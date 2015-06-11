@@ -13,26 +13,17 @@ namespace Instagram\Request\Users;
 
 
 use Instagram\Request\AbstractInstagramRequest;
+use Instagram\Request\Traits\Count;
+use Instagram\Request\Traits\IdMinMax;
 use Instagram\Response\AbstractInstagramResponse;
 use Instagram\Response\Users\SelfFeedResponse;
 
 class SelfFeedRequest extends AbstractInstagramRequest
 {
 
-    public function setCount($count)
-    {
-        $this['count'] = $count;
-    }
+    use IdMinMax;
+    use Count;
 
-    public function setMaxId($maxId)
-    {
-        $this['max_id'] = $maxId;
-    }
-
-    public function setMinId($minId)
-    {
-        $this['min_id'] = $minId;
-    }
 
     /**
      * Get Request Method (GET|POST|DELETE)

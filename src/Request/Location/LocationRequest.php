@@ -10,22 +10,35 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Request\Likes;
+namespace Instagram\Request\Location;
 
 
 use Instagram\Request\AbstractInstagramRequest;
-use Instagram\Request\Traits\MethodPost;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Likes\PostLikeResponse;
+use Instagram\Response\Locations\LocationResponse;
 
-class PostLikeRequest extends AbstractInstagramRequest
+class LocationRequest extends AbstractInstagramRequest
 {
 
-    use MethodPost;
-
-    public function setMediaId($mediaId)
+    /**
+     * Desc
+     *
+     * @param $locationId
+     * @return void
+     */
+    public function setLocationId($locationId)
     {
-        $this['media_id'] = $mediaId;
+        $this['location_id'] = $locationId;
+    }
+
+    /**
+     * Get Request Method (GET|POST|DELETE)
+     *
+     * @return string
+     */
+    public function getMethod()
+    {
+        return "GET";
     }
 
     /**
@@ -35,7 +48,7 @@ class PostLikeRequest extends AbstractInstagramRequest
      */
     public function getUrl()
     {
-        return "/media/{media_id}/likes";
+        return "/locations/{location_id}";
     }
 
     /**
@@ -45,7 +58,7 @@ class PostLikeRequest extends AbstractInstagramRequest
      */
     public function getRequiredAttributes()
     {
-        return ["media_id"];
+        return ['location_id'];
     }
 
     /**
@@ -55,6 +68,6 @@ class PostLikeRequest extends AbstractInstagramRequest
      */
     public function getResponsePrototype()
     {
-        return new PostLikeResponse();
+        return new LocationResponse();
     }
 }

@@ -10,23 +10,34 @@
  * @link      http://www.home24.de
  */
 
-namespace Instagram\Request\Users;
+namespace Instagram\Request\Location;
 
 
 use Instagram\Request\AbstractInstagramRequest;
-use Instagram\Request\Traits\Count;
-use Instagram\Request\Traits\Timestamp;
+use Instagram\Request\Traits\Distance;
+use Instagram\Request\Traits\LatLng;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Users\UserMediaRecentResponse;
+use Instagram\Response\Locations\LocationSearchResponse;
 
-class UserMediaRecentRequest extends AbstractInstagramRequest
+class LocationSearchRequest extends AbstractInstagramRequest
 {
-    use Timestamp;
-    use Count;
 
-    public function setUserId($userId)
+    use Distance;
+    use LatLng;
+
+    public function setFacebookPlaceId($id)
     {
-        $this['user_id'] = $userId;
+        $this['facebook_places_id'] = $id;
+    }
+
+    public function setFoursquareId($id)
+    {
+        $this['foursquare_id'] = $id;
+    }
+
+    public function setFoursquareV2Id($id)
+    {
+        $this['foursquare_v2_id'] = $id;
     }
 
     /**
@@ -36,7 +47,7 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getMethod()
     {
-        return 'GET';
+        return "GET";
     }
 
     /**
@@ -46,7 +57,7 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getUrl()
     {
-        return '/users/{user_id}/media/recent';
+        return "/locations/search";
     }
 
     /**
@@ -56,7 +67,7 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getRequiredAttributes()
     {
-        return ['user_id'];
+        return [];
     }
 
     /**
@@ -66,6 +77,6 @@ class UserMediaRecentRequest extends AbstractInstagramRequest
      */
     public function getResponsePrototype()
     {
-        return new UserMediaRecentResponse();
+        return new LocationSearchResponse();
     }
 }
