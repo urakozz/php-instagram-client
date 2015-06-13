@@ -14,7 +14,7 @@ use Instagram\Response\Users\UserResponse;
 use Instagram\Response\AbstractInstagramResponse;
 
 
-class GetUserFollowsRequest extends AbstractInstagramRequest
+class GetUserFollowedByRequest extends AbstractInstagramRequest
 {
     public function setUserId($userId)
     {
@@ -38,7 +38,7 @@ class GetUserFollowsRequest extends AbstractInstagramRequest
      */
     public function getUrl()
     {
-        return "/user/{user_id}/follows";
+        return "/user/{user_id}/followed-by";
     }
 
     /**

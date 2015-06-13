@@ -14,13 +14,8 @@ use Instagram\Response\Users\UserResponse;
 use Instagram\Response\AbstractInstagramResponse;
 
 
-class GetUserFollowsRequest extends AbstractInstagramRequest
+class GetUserRelationshipRequest extends AbstractInstagramRequest
 {
-    public function setUserId($userId)
-    {
-        $this['user_id'] = $userId;
-    }
-
     /**
      * Get Request Method (GET|POST|DELETE)
      *
@@ -38,7 +33,7 @@ class GetUserFollowsRequest extends AbstractInstagramRequest
      */
     public function getUrl()
     {
-        return "/user/{user_id}/follows";
+        return "/user/{user_id}/relationship";
     }
 
     /**
@@ -48,7 +43,7 @@ class GetUserFollowsRequest extends AbstractInstagramRequest
      */
     public function getRequiredAttributes()
     {
-        return ['user_id'];
+        return [];
     }
 
     /**
