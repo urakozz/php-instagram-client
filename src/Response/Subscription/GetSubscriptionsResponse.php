@@ -13,7 +13,6 @@
 namespace Instagram\Response\Subscription;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\AbstractMediaResponse;
 use Instagram\Response\Partials\Subscription;
 use JMS\Serializer\Annotation\Type;
@@ -30,7 +29,7 @@ class GetSubscriptionsResponse extends AbstractMediaResponse
     /**
      * Desc
      *
-     * @return Subscription[] | ArrayCollection
+     * @return Subscription[] | \Doctrine\Common\Collections\ArrayCollection
      */
     public function getData()
     {
