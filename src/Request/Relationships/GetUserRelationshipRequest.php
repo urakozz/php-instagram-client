@@ -11,9 +11,8 @@ namespace Instagram\Request\Relationships;
 
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Request\Traits\MethodGet;
-use Instagram\Response\Relationships\UserListResponse;
-use Instagram\Response\Users\UserResponse;
 use Instagram\Response\AbstractInstagramResponse;
+use Instagram\Response\Relationships\UserListResponse;
 
 
 class GetUserRelationshipRequest extends AbstractInstagramRequest

@@ -96,6 +96,6 @@ class AuthConfig extends AbstractConfig
      */
     protected function doValidate()
     {
-        // TODO: Implement doValidate() method.
+
     }
 }

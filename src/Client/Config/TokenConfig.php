@@ -38,6 +38,11 @@ class TokenConfig extends AbstractConfig
         $this->validate();
     }
 
+    /**
+     * Desc
+     *
+     * @return string
+     */
     public function getToken()
     {
         return $this->token;
@@ -45,6 +50,6 @@ class TokenConfig extends AbstractConfig
 
     protected function doValidate()
     {
-        // TODO: Implement doValidate() method.
+
     }
 }

@@ -15,7 +15,6 @@ namespace Instagram\Request\Tag;
 
 use Instagram\Request\AbstractInstagramRequest;
 use Instagram\Response\AbstractInstagramResponse;
-use Instagram\Response\Tag\TagResponse;
 use Instagram\Response\Tag\TagSearchResponse;
 
 class TagSearchRequest extends AbstractInstagramRequest

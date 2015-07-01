@@ -14,7 +14,6 @@ namespace Instagram\Request\Location;
 
 
 use Instagram\Request\AbstractInstagramRequest;
-use Instagram\Request\Traits\Count;
 use Instagram\Request\Traits\IdMinMax;
 use Instagram\Request\Traits\Timestamp;
 use Instagram\Response\AbstractInstagramResponse;
