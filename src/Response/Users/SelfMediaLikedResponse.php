@@ -2,7 +2,6 @@
 
 namespace Instagram\Response\Users;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\AbstractMediaResponse;
 use Instagram\Response\Partials\Media;
 use JMS\Serializer\Annotation\Type;
@@ -29,7 +28,7 @@ class SelfMediaLikedResponse extends AbstractMediaResponse
     /**
      * Desc
      *
-     * @return \Instagram\Response\Partials\Media[] | ArrayCollection
+     * @return \Instagram\Response\Partials\Media[] | Doctrine\Common\Collections\ArrayCollection
      */
     public function getData()
     {
