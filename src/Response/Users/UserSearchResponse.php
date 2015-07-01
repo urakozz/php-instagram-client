@@ -13,7 +13,6 @@
 namespace Instagram\Response\Users;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Instagram\Response\AbstractMediaResponse;
 use Instagram\Response\Partials\UserInfo;
 use JMS\Serializer\Annotation\Type;
@@ -29,7 +28,7 @@ class UserSearchResponse extends AbstractMediaResponse
     /**
      * Desc
      *
-     * @return UserInfo[] | ArrayCollection
+     * @return UserInfo[] | \Doctrine\Common\Collections\ArrayCollection
      */
     public function getData()
     {
