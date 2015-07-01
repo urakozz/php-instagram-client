@@ -16,7 +16,7 @@ namespace Instagram\Response\Relationships;
 use Instagram\Response\AbstractMediaResponse;
 use JMS\Serializer\Annotation\Type;
 
-class GetUserFollowedByResponse extends AbstractMediaResponse
+class UserListResponse extends AbstractMediaResponse
 {
 
     /**

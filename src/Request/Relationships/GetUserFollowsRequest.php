@@ -10,25 +10,19 @@ namespace Instagram\Request\Relationships;
 
 
 use Instagram\Request\AbstractInstagramRequest;
+use Instagram\Request\Traits\MethodGet;
+use Instagram\Response\Relationships\UserListResponse;
 use Instagram\Response\Users\UserResponse;
 use Instagram\Response\AbstractInstagramResponse;
 
 
 class GetUserFollowsRequest extends AbstractInstagramRequest
 {
+    use MethodGet;
+
     public function setUserId($userId)
     {
         $this['user_id'] = $userId;
-    }
-
-    /**
-     * Get Request Method (GET|POST|DELETE)
-     *
-     * @return string
-     */
-    public function getMethod()
-    {
-        return "GET";
     }
 
     /**
@@ -58,6 +52,6 @@ class GetUserFollowsRequest extends AbstractInstagramRequest
      */
     public function getResponsePrototype()
     {
-
+        return new UserListResponse;
     }
 }
